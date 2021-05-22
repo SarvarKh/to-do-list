@@ -1,0 +1,23 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SarvarKh/to-do-list.git"
+  },
+  "author": "sarvar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SarvarKh/to-do-list/issues"
+  },
+  "homepage": "https://github.com/SarvarKh/to-do-list#readme",
+  "devDependencies": {
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
