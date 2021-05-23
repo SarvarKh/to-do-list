@@ -1,4 +1,7 @@
-import createHome from "./home"
+// import loadInbox from './inbox';
+// import loadToday from './today';
+// import loadProject from './project';
+// import loadDefault from './default';
 
 const createE = (elementName, content, className, href) => {
     const element = document.createElement(elementName);
@@ -11,6 +14,17 @@ const createE = (elementName, content, className, href) => {
 function createHeader() {
     const header = createE('h1', 'Smart Todo-list');
     return header;
+}
+
+function createAside() {
+    const aside = createE("aside", "Aside");
+    
+    return aside;
+}
+
+function createMain() {
+    const main = createE('main', "Main", "main");
+    return main;
 }
 
 function createFooter() {
@@ -49,7 +63,8 @@ function start() {
     const content = document.getElementById('content');
 
     content.appendChild(createHeader());
-    content.appendChild(createHome());
+    content.appendChild(createAside());
+    content.appendChild(createMain());
     content.appendChild(createFooter());
 }
 
