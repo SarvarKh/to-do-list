@@ -9,7 +9,7 @@ const createE = (elementName, content, className, href) => {
 };
 
 function createHeader() {
-    const header = createE('h1', 'HEADER');
+    const header = createE('h1', 'Smart Todo-list');
     return header;
 }
 
