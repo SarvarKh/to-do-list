@@ -1,1 +1,3 @@
-console.log("Hey, I am running this console.log from INDEX.JS");
+import start from "./page-loader"
+
+document.body.appendChild(start());

@@ -1,1 +1,1 @@
-console.log("Hey, I am running this console.log from INDEX.JS");
+(()=>{"use strict";document.body.appendChild(void document.getElementById("content").appendChild(function(){const e=document.createElement("h1");return e.innerHTML="HEADER - Todo List",console.log("Hey, I am running this console.log from PageLoader > Index"),e}()))})();
