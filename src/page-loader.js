@@ -32,8 +32,9 @@ function createAside() {
     let asideBottom = createE("div", false, "aside-bottom");
 
     let inboxBtn = createE("button", false, "aside-btn");
+    console.log("call event...");
     inboxBtn.addEventListener('click', (e) => {
-        if (e.target.classList.containes('active')) return;
+        if (e.target.classList.contains('active')) return;
         setActiveButton(inboxBtn);
         loadInbox();
     })
@@ -47,8 +48,8 @@ function createAside() {
 
     let todayBtn = createE("button", false, "aside-btn");
     todayBtn.addEventListener('click', (e) => {
-        if (e.target.classList.containes('active')) return;
-        setActiveButton(inboxBtn);
+        if (e.target.classList.contains('active')) return;
+        setActiveButton(todayBtn);
         loadToday();
     })
     const todayBtnIcon = document.createElement('i');
@@ -65,7 +66,7 @@ function createAside() {
 
     let defaulBtn = createE("button", false, "aside-btn");
     defaulBtn.addEventListener('click', (e) => {
-        if (e.target.classList.containes('active')) return;
+        if (e.target.classList.contains('active')) return;
         setActiveButton(defaulBtn);
         loadDefault();
     })

@@ -6,9 +6,15 @@ const createE = (elementName, content, className, href) => {
     return element;
 };
 
+function createDefault() {
+    const defaultPage = createE("div", "Hey this is from default page!");
+    return defaultPage;
+}
+
 function loadDefault() {
-    const content = document.querySelector("#main");
-    content.appendChild(createE("div", "Hey this is from default js!"))
+    const main = document.querySelector("#main");
+    main.textContent = "";
+    main.appendChild(createDefault());
 }
 
 export default loadDefault
