@@ -17,8 +17,42 @@ function createHeader() {
 }
 
 function createAside() {
-    const aside = createE("aside", "Aside");
-    
+    const aside = createE("aside", false);
+    let asideTop = createE("div", false, "aside-top");
+    let asideBottom = createE("div", false, "aside-bottom");
+
+    let inboxBtn = createE("button");
+    const inboxBtnIcon = document.createElement('i');
+    inboxBtnIcon.classList.add('fas');
+    inboxBtnIcon.classList.add('fa-inbox');
+    let inboxBtnTitle = createE('span', "Inbox")
+    inboxBtn.appendChild(inboxBtnIcon);
+    inboxBtn.appendChild(inboxBtnTitle);
+    asideTop.appendChild(inboxBtn);
+
+    let todayBtn = createE("button");
+    const todayBtnIcon = document.createElement('i');
+    todayBtnIcon.classList.add('fas');
+    todayBtnIcon.classList.add('fa-arrow-circle-down');
+    let todayBtnTitle = createE('span', "Today")
+    todayBtn.appendChild(todayBtnIcon);
+    todayBtn.appendChild(todayBtnTitle);
+    asideTop.appendChild(todayBtn);
+    aside.appendChild(asideTop);
+
+    let project = createE("div", "Projects:");
+    asideBottom.appendChild(project);
+
+    let defaulBtn = createE("button");
+    const defaulBtnIcon = document.createElement('i');
+    defaulBtnIcon.classList.add('far');
+    defaulBtnIcon.classList.add('fa-circle');
+    let defaultBtnTitle = createE('span', "Default")
+    defaulBtn.appendChild(defaulBtnIcon);
+    defaulBtn.appendChild(defaultBtnTitle);
+    asideBottom.appendChild(defaulBtn);
+    aside.appendChild(asideBottom);
+
     return aside;
 }
 
