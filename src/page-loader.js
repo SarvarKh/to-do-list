@@ -1,7 +1,7 @@
-// import loadInbox from './inbox';
-// import loadToday from './today';
-// import loadProject from './project';
-// import loadDefault from './default';
+import loadInbox from './inbox';
+import loadToday from './today';
+import loadDefault from './default';
+
 
 const createE = (elementName, content, className, href) => {
     const element = document.createElement(elementName);
@@ -10,6 +10,16 @@ const createE = (elementName, content, className, href) => {
     if (href) { element.href = href;}
     return element;
 };
+
+function setActiveButton(button) {
+    const buttons = document.querySelectorAll('.aside-btn');
+
+    buttons.forEach((btn) => {
+      btn.classList.remove('active');
+    });
+
+    button.classList.add('active');
+}
 
 function createHeader() {
     const header = createE('h1', 'Smart Todo-list');
@@ -21,7 +31,12 @@ function createAside() {
     let asideTop = createE("div", false, "aside-top");
     let asideBottom = createE("div", false, "aside-bottom");
 
-    let inboxBtn = createE("button");
+    let inboxBtn = createE("button", false, "aside-btn");
+    inboxBtn.addEventListener('click', (e) => {
+        if (e.target.classList.containes('active')) return;
+        setActiveButton(inboxBtn);
+        loadInbox();
+    })
     const inboxBtnIcon = document.createElement('i');
     inboxBtnIcon.classList.add('fas');
     inboxBtnIcon.classList.add('fa-inbox');
@@ -30,7 +45,12 @@ function createAside() {
     inboxBtn.appendChild(inboxBtnTitle);
     asideTop.appendChild(inboxBtn);
 
-    let todayBtn = createE("button");
+    let todayBtn = createE("button", false, "aside-btn");
+    todayBtn.addEventListener('click', (e) => {
+        if (e.target.classList.containes('active')) return;
+        setActiveButton(inboxBtn);
+        loadToday();
+    })
     const todayBtnIcon = document.createElement('i');
     todayBtnIcon.classList.add('fas');
     todayBtnIcon.classList.add('fa-arrow-circle-down');
@@ -43,7 +63,12 @@ function createAside() {
     let project = createE("div", "Projects:");
     asideBottom.appendChild(project);
 
-    let defaulBtn = createE("button");
+    let defaulBtn = createE("button", false, "aside-btn");
+    defaulBtn.addEventListener('click', (e) => {
+        if (e.target.classList.containes('active')) return;
+        setActiveButton(defaulBtn);
+        loadDefault();
+    })
     const defaulBtnIcon = document.createElement('i');
     defaulBtnIcon.classList.add('far');
     defaulBtnIcon.classList.add('fa-circle');
@@ -57,7 +82,9 @@ function createAside() {
 }
 
 function createMain() {
-    const main = createE('main', "Main", "main");
+    const main = document.createElement('main');
+    main.classList.add('main');
+    main.setAttribute('id', 'main');
     return main;
 }
 
@@ -95,11 +122,13 @@ function createFooter() {
 
 function start() {
     const content = document.getElementById('content');
-
     content.appendChild(createHeader());
     content.appendChild(createAside());
     content.appendChild(createMain());
     content.appendChild(createFooter());
+
+    setActiveButton(document.querySelector('.aside-btn'));
+    loadDefault();
 }
 
 export default start
