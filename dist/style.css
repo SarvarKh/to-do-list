@@ -42,14 +42,13 @@ button:hover {
 .container {
     display: flex;
     margin-top: 4.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 aside {
     background-color: #dbebff;
     padding: 1.5rem;
     width: 30%;
-    height: 100vh;
 }
 
 .aside-top {
@@ -116,6 +115,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 1rem;
+    margin-bottom: 2rem;
     font-size: 0.8rem;
   }
   
@@ -147,13 +147,11 @@ table button {
 
 /* Footer */
 footer {
-    padding: 1rem 1rem;
+    padding: 1rem;
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 1rem;
     text-align: center;
-    z-index: 1;
     font-size: 1.2rem;
     background-color: #4998ff;
     color: #fff;

@@ -29,6 +29,7 @@ function checkProperties(obj) {
 }
 
 function addTaskToDefaultTasks(newTask, tasks) {
+    console.log(tasks.default);
     tasks.default.push(newTask);
 }
 
