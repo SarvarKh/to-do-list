@@ -15,7 +15,15 @@ function Task(title, description, dueDate, priority, notes, checklist) {
     this.checklist = checklist;
 }
 
-const defaultTasks = {};
+const allTasks = {
+    default: [],
+    today: []
+};
+
+function addTaskToDefaultTasks(newTask, tasks) {
+    tasks.default.push(newTask);
+    console.log("Hey I am being called");
+}
 
 function submitForm(btn) {
     btn.addEventListener('click', () => {
@@ -29,10 +37,9 @@ function submitForm(btn) {
         if (title.value === '' || description.value === '' || dueDate.value === '' || priority.value === '' || notes.value === '') {
             alert('Fields must be filled out'); // eslint-disable-line no-alert
           } else {
-            const newBook = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.value);
-            addTaskToDefault(newTask);
+            const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.value);
+            addTaskToDefaultTasks(newTask, allTasks);
             displayTasks(newTask);
-            console.log("Hey I am being called");
         }
     })
     return btn;
@@ -109,7 +116,7 @@ function displayTaskForm() {
     return form;
 }
 
-function createDefault(tasksObj) {
+function createDefault() {
     const defaultPage = createE("div", false, "default-page");
 
     defaultPage.appendChild(displayTaskForm());
@@ -120,7 +127,7 @@ function createDefault(tasksObj) {
 function loadDefault() {
     const main = document.querySelector("#main");
     main.textContent = "";
-    main.appendChild(createDefault(defaultTasks));
+    main.appendChild(createDefault());
 }
 
 export default loadDefault
