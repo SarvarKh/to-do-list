@@ -21,8 +21,19 @@ const allTasks = {
 };
 
 function addTaskToDefaultTasks(newTask, tasks) {
-    console.log(tasks.default);
     tasks.default.push(newTask);
+}
+
+function callTaskFromAllTasks(obj, key) {
+    const oldTasks = document.querySelectorAll("tr");
+    const arrOldTasks = Array.from(oldTasks);
+    for (let index = 1; index < arrOldTasks.length; index++) {
+        const element = arrOldTasks[index];
+        element.innerHTML = "";
+    }
+    obj[key].map((e) => {
+        displayTasks(e)
+    })
 }
 
 function submitForm(btn) {
@@ -44,7 +55,8 @@ function submitForm(btn) {
           } else {
             const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
             addTaskToDefaultTasks(newTask, allTasks);
-            displayTasks(newTask);
+            //displayTasks(newTask);
+            callTaskFromAllTasks(allTasks, "default");
         }
     })
     return btn;
@@ -188,7 +200,6 @@ const displayTasks = (newTask) => {
     removeBtn.addEventListener('click', () => {
       tr.remove();
     });
-
     return table;
 };
 
