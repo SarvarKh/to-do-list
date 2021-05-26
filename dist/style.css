@@ -89,6 +89,9 @@ main {
     margin-bottom: 2.5rem;
     color: black;
     font-size: 0.8rem;
+    border: 1px solid #dbebff;
+    padding: 2rem 3rem;
+    border-radius: 0.5rem;
 }
 
 .form > input, select {
@@ -101,6 +104,10 @@ main {
 }
 
 .checkbox-container input {
+    margin-right: 0.5rem;
+}
+
+.fa-plus-circle {
     margin-right: 0.5rem;
 }
 
