@@ -32,7 +32,6 @@ function createAside() {
     let asideBottom = createE("div", false, "aside-bottom");
 
     let inboxBtn = createE("button", false, "aside-btn");
-    console.log("call event...");
     inboxBtn.addEventListener('click', (e) => {
         if (e.target.classList.contains('active')) return;
         setActiveButton(inboxBtn);
