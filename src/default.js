@@ -8,8 +8,21 @@ const createE = (elementName, content, className, href) => {
 
 const defaultTasks = {};
 
-function createDefault(tasksObj) {
-    const defaultPage = createE("div", false, "default-page");
+function submitForm(btn) {
+    btn.addEventListener('click', () => {
+        console.log("Hey I am being called");
+        const title = document.querySelector('#title');
+        const description = document.querySelector('#description');
+        const dueDate = document.querySelector('#dueDate');
+        const priority = document.querySelector('#priority');
+        const notes = document.querySelector('#notes');
+        const checklist = document.querySelector('#checklist');
+
+    })
+    return btn;
+}
+
+function displayTaskForm() {
     const form = createE("div", false, "form");
     const input1 = createE("input");
     input1.setAttribute("type", "text");
@@ -25,17 +38,25 @@ function createDefault(tasksObj) {
     input2.setAttribute("placeholder", "add description");
 
     const input3 = createE("input");
-    input3.setAttribute("type", "text");
+    input3.setAttribute("type", "date");
     input3.setAttribute("id", "dueDate");
     input3.setAttribute("name", "dueDate");
     input3.setAttribute("placeholder", "add due date");
 
-    const input4 = createE("input");
-    input4.setAttribute("type", "number");
+    const input4 = createE("select");
     input4.setAttribute("id", "priority");
-    input4.setAttribute("name", "priority");
-    input4.setAttribute("placeholder", "add priority");
-
+    const input4Label = createE("label", "Choose a priority:");
+    input4Label.setAttribute("for", "priority");
+    const option1 = createE("option", "High");
+    option1.setAttribute("value", "high");
+    input4.appendChild(option1);
+    const option2 = createE("option", "Medium");
+    option2.setAttribute("value", "medium");
+    input4.appendChild(option2);
+    const option3 = createE("option", "Low");
+    option3.setAttribute("value", "low");
+    input4.appendChild(option3);
+    
     const input5 = createE("input");
     input5.setAttribute("type", "text");
     input5.setAttribute("id", "notes");
@@ -51,25 +72,31 @@ function createDefault(tasksObj) {
     input6Label.setAttribute("for", "checklist");
 
     const addTaskbtn = createE("button");
-    addTaskbtn.addEventListener('click', (e) => {
-        console.log("I am being called from Add Tasj Btn event Linster!");
-    })
+    submitForm(addTaskbtn);
     const addTaskBtnIcon = createE("i");
     addTaskBtnIcon.classList.add("fas");
     addTaskBtnIcon.classList.add("fa-plus-circle");
     const addTaskbtnSpan = createE("span", "Add task");
+    addTaskbtn.appendChild(addTaskBtnIcon);
+    addTaskbtn.appendChild(addTaskbtnSpan);
 
     form.appendChild(input1);
     form.appendChild(input2);
     form.appendChild(input3);
+    form.appendChild(input4Label);
     form.appendChild(input4);
     form.appendChild(input5);
     form.appendChild(input6);
     form.appendChild(input6Label);
-    defaultPage.appendChild(form);
-    addTaskbtn.appendChild(addTaskBtnIcon);
-    addTaskbtn.appendChild(addTaskbtnSpan);
-    defaultPage.appendChild(addTaskbtn);
+    form.appendChild(addTaskbtn);
+
+    return form;
+}
+
+function createDefault(tasksObj) {
+    const defaultPage = createE("div", false, "default-page");
+
+    defaultPage.appendChild(displayTaskForm());
 
     return defaultPage;
 }
