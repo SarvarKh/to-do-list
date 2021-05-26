@@ -20,14 +20,6 @@ const allTasks = {
     today: []
 };
 
-function checkProperties(obj) {
-    for (let key in obj) {
-        if (obj[key] !== null && obj[key] != "")
-            return false;
-    }
-    return true;
-}
-
 function addTaskToDefaultTasks(newTask, tasks) {
     console.log(tasks.default);
     tasks.default.push(newTask);

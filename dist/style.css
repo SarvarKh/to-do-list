@@ -43,6 +43,7 @@ button:hover {
     display: flex;
     margin-top: 4.2rem;
     margin-bottom: 2rem;
+    min-height: 85vh;
 }
 
 aside {
