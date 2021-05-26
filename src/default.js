@@ -92,12 +92,13 @@ function displayTaskForm() {
     input5.setAttribute("name", "notes");
     input5.setAttribute("placeholder", "any notes?");
 
+    const input6Container = createE("div", false, "checkbox-container");
     const input6 = createE("input");
     input6.setAttribute("type", "checkbox");
     input6.setAttribute("id", "checklist");
     input6.setAttribute("name", "checklist");
 
-    const input6Label = createE("label", "Whether it's been completed?");
+    const input6Label = createE("label", "Completeness Status");
     input6Label.setAttribute("for", "checklist");
 
     const addTaskbtn = createE("button");
@@ -115,8 +116,9 @@ function displayTaskForm() {
     form.appendChild(input4Label);
     form.appendChild(input4);
     form.appendChild(input5);
-    form.appendChild(input6);
-    form.appendChild(input6Label);
+    input6Container.appendChild(input6);
+    input6Container.appendChild(input6Label);
+    form.appendChild(input6Container);
     form.appendChild(addTaskbtn);
 
     return form;
