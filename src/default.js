@@ -6,11 +6,19 @@ const createE = (elementName, content, className, href) => {
     return element;
 };
 
+function Task(title, description, dueDate, priority, notes, checklist) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.notes = notes;
+    this.checklist = checklist;
+}
+
 const defaultTasks = {};
 
 function submitForm(btn) {
     btn.addEventListener('click', () => {
-        console.log("Hey I am being called");
         const title = document.querySelector('#title');
         const description = document.querySelector('#description');
         const dueDate = document.querySelector('#dueDate');
@@ -18,6 +26,14 @@ function submitForm(btn) {
         const notes = document.querySelector('#notes');
         const checklist = document.querySelector('#checklist');
 
+        if (title.value === '' || description.value === '' || dueDate.value === '' || priority.value === '' || notes.value === '') {
+            alert('Fields must be filled out'); // eslint-disable-line no-alert
+          } else {
+            const newBook = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.value);
+            addTaskToDefault(newTask);
+            displayTasks(newTask);
+            console.log("Hey I am being called");
+        }
     })
     return btn;
 }
