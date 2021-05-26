@@ -22,7 +22,15 @@ function setActiveButton(button) {
 }
 
 function createHeader() {
-    const header = createE('h1', 'Smart Todo-list');
+    const header = createE("header");
+    const headerIcon = createE("i");
+    headerIcon.classList.add("fas");
+    headerIcon.classList.add("fa-check-double");
+    const headerTitle = createE('h1', 'Smart Todo-list');
+
+    header.appendChild(headerIcon);
+    header.appendChild(headerTitle);
+
     return header;
 }
 
@@ -123,8 +131,10 @@ function createFooter() {
 function start() {
     const content = document.getElementById('content');
     content.appendChild(createHeader());
-    content.appendChild(createAside());
-    content.appendChild(createMain());
+    const container = createE("div", false, "container");
+    container.appendChild(createAside());
+    container.appendChild(createMain());
+    content.appendChild(container);
     content.appendChild(createFooter());
 
     setActiveButton(document.querySelector('.aside-btn'));
