@@ -22,6 +22,7 @@ const allTasks = {
 
 function addTaskToDefaultTasks(newTask, tasks) {
     tasks.default.push(newTask);
+    localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
 }
 
 function callTaskFromAllTasks(obj, key) {
@@ -211,6 +212,7 @@ function createDefault() {
 
     defaultPage.appendChild(displayTaskForm());
 
+    console.log(JSON.parse(localStorage.getItem('defaultPage')));;
     return defaultPage;
 }
 
