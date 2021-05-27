@@ -44,7 +44,7 @@ function submitForm(btn) {
         const priority = document.querySelector('#priority');
         const notes = document.querySelector('#notes');
         let checklist = document.querySelector('#checklist');
-
+        
         if (checklist.checked) {
             checklist.status = "Closed";
         } else {
@@ -52,10 +52,13 @@ function submitForm(btn) {
         }
         if (title.value === '' || description.value === '' || dueDate.value === '' || priority.value === '' || notes.value === '') {
             alert('Fields must be filled out'); // eslint-disable-line no-alert
-          } else {
+        } else {
             const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
             addTaskToDefaultTasks(newTask, allTasks);
-            //displayTasks(newTask);
+            
+            let defaultP = document.querySelector(".default-page");
+            defaultP.appendChild(displayTableHeading());
+            
             callTaskFromAllTasks(allTasks, "default");
         }
     })
@@ -207,7 +210,6 @@ function createDefault() {
     const defaultPage = createE("div", false, "default-page");
 
     defaultPage.appendChild(displayTaskForm());
-    defaultPage.appendChild(displayTableHeading());
 
     return defaultPage;
 }
