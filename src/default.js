@@ -210,56 +210,7 @@ const displayAllTasks = (tasksArray) => {
         });
         return table;
     });
-
 }
-
-const displayTasks = (newTask) => {
-    const table = document.querySelector('table');
-
-    const tr = document.createElement('tr');
-    tr.classList.add('task-row');
-  
-    const td1 = document.createElement('td');
-    const td2 = document.createElement('td');
-    const td3 = document.createElement('td');
-    const td4 = document.createElement('td');
-    const td5 = document.createElement('td');
-    const td6 = document.createElement('td');
-    const removeBtn = document.createElement('button');
-    const td6Btn = document.createElement('button');
-  
-    td1.textContent = newTask.title;
-    td2.textContent = newTask.description;
-    td3.textContent = newTask.dueDate;
-    td4.textContent = newTask.priority;
-    td5.textContent = newTask.notes;
-    td6Btn.textContent = newTask.checklist;
-    removeBtn.textContent = 'Remove';
-    tr.setAttribute('data-index', allTasks.default.indexOf(newTask));
-  
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    tr.appendChild(td4);
-    tr.appendChild(td5);
-    tr.appendChild(td6);
-    td6.appendChild(td6Btn);
-    td6.appendChild(removeBtn);
-    table.appendChild(tr);
-  
-    td6Btn.addEventListener('click', () => {
-      if (td6Btn.textContent === 'Closed') {
-        td6Btn.textContent = 'Open';
-      } else {
-        td6Btn.textContent = 'Closed';
-      }
-    });
-  
-    removeBtn.addEventListener('click', () => {
-      tr.remove();
-    });
-    return table;
-};
 
 function createDefault() {
     const defaultPage = createE("div", false, "default-page");
