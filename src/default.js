@@ -23,6 +23,7 @@ const allTasks = {
 function addTaskToDefaultTasks(newTask, tasksObj) {
     let defLocalStorage = JSON.parse(localStorage.getItem('defaultPage'));
     if (defLocalStorage.length > 0) {
+        tasksObj.default = [];
         defLocalStorage.map((e) => {
             tasksObj.default.push(e);
         });
@@ -213,7 +214,7 @@ function createDefault() {
     const defaultPage = createE("div", false, "default-page");
 
     defaultPage.appendChild(displayTaskForm());
-
+    console.log(JSON.parse(localStorage.getItem('defaultPage')));
     if (JSON.parse(localStorage.getItem('defaultPage')).length > 0) {
 
         defaultPage.appendChild(displayTable());
