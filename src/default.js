@@ -20,9 +20,18 @@ const allTasks = {
     today: []
 };
 
-function addTaskToDefaultTasks(newTask, tasks) {
-    tasks.default.push(newTask);
-    localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
+function addTaskToDefaultTasks(newTask, tasksObj) {
+    let defLocalStorage = JSON.parse(localStorage.getItem('defaultPage'));
+    if (defLocalStorage.length > 0) {
+        defLocalStorage.map((e) => {
+            tasksObj.default.push(e);
+        });
+        tasksObj.default.push(newTask);
+        localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
+    } else {
+        tasksObj.default.push(newTask);
+        localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
+    }
 }
 
 function submitForm(btn) {
@@ -45,7 +54,6 @@ function submitForm(btn) {
             const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
             addTaskToDefaultTasks(newTask, allTasks);
             let defPage = document.querySelector(".default-page");
-            console.log(defPage);
             defPage.appendChild(displayTable());
         }
     })
@@ -144,7 +152,6 @@ function displayTable() {
     const oldTasks = document.querySelectorAll("tr");
     if (oldTasks.length > 0) {
         const arrOldTasks = Array.from(oldTasks);
-        console.log(oldTasks.length);
         for (let index = 0; index < arrOldTasks.length; index++) {
             const element = arrOldTasks[index];
             element.innerHTML = "";
