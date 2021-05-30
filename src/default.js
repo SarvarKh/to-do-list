@@ -44,6 +44,9 @@ function submitForm(btn) {
         } else {
             const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
             addTaskToDefaultTasks(newTask, allTasks);
+            let defPage = document.querySelector(".default-page");
+            console.log(defPage);
+            defPage.appendChild(displayTable());
         }
     })
     return btn;
@@ -122,7 +125,7 @@ function displayTaskForm() {
     return form;
 }
 
-function displayTableHeading() {
+function displayTable() {
     const table = createE("table");
     const trHeading = createE("tr");
     const trh1 = createE("th", "Title");
@@ -142,7 +145,7 @@ function displayTableHeading() {
     if (oldTasks.length > 0) {
         const arrOldTasks = Array.from(oldTasks);
         console.log(oldTasks.length);
-        for (let index = 1; index < arrOldTasks.length; index++) {
+        for (let index = 0; index < arrOldTasks.length; index++) {
             const element = arrOldTasks[index];
             element.innerHTML = "";
         }
@@ -206,7 +209,7 @@ function createDefault() {
 
     if (JSON.parse(localStorage.getItem('defaultPage')).length > 0) {
 
-        defaultPage.appendChild(displayTableHeading());
+        defaultPage.appendChild(displayTable());
     }
 
     return defaultPage;
