@@ -180,7 +180,7 @@ function displayTable() {
         td5.textContent = newTask.notes;
         td6Btn.textContent = newTask.checklist;
         removeBtn.textContent = 'Remove';
-        tr.setAttribute('data-index', allTasks.default.indexOf(newTask));
+        tr.setAttribute('data-index', tasksArray.indexOf(newTask));
       
         
         tr.appendChild(td1);
@@ -202,7 +202,11 @@ function displayTable() {
         });
       
         removeBtn.addEventListener('click', () => {
-          tr.remove();
+            console.log(tr.dataset.index);
+            tr.remove();
+            console.log(allTasks.default);
+            allTasks.default.splice(tr.dataset.index, 1);
+            localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
         });
         return table;
     });
