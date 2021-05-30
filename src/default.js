@@ -202,9 +202,7 @@ function displayTable() {
         });
       
         removeBtn.addEventListener('click', () => {
-            console.log(tr.dataset.index);
             tr.remove();
-            console.log(allTasks.default);
             allTasks.default.splice(tr.dataset.index, 1);
             localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
         });
