@@ -25,20 +25,6 @@ function addTaskToDefaultTasks(newTask, tasks) {
     localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
 }
 
-function callTaskFromAllTasks(arr) {
-    const oldTasks = document.querySelectorAll("tr");
-    const arrOldTasks = Array.from(oldTasks);
-    for (let index = 1; index < arrOldTasks.length; index++) {
-        const element = arrOldTasks[index];
-        element.innerHTML = "";
-    }
-    let defLocalStorage = JSON.parse(localStorage.getItem('defaultPage'));
-    console.log(defLocalStorage);
-    if (defLocalStorage.length > 0) {
-        displayAllTasks(defLocalStorage);
-    }
-}
-
 function submitForm(btn) {
     btn.addEventListener('click', () => {
         const title = document.querySelector('#title');
@@ -58,11 +44,6 @@ function submitForm(btn) {
         } else {
             const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
             addTaskToDefaultTasks(newTask, allTasks);
-            
-            let defaultP = document.querySelector(".default-page");
-            defaultP.appendChild(displayTableHeading());
-            
-            callTaskFromAllTasks(JSON.parse(localStorage.getItem('defaultPage')));
         }
     })
     return btn;
@@ -157,12 +138,17 @@ function displayTableHeading() {
     trHeading.appendChild(trh5);
     trHeading.appendChild(trh6);
     table.appendChild(trHeading);
+    const oldTasks = document.querySelectorAll("tr");
+    if (oldTasks.length > 0) {
+        const arrOldTasks = Array.from(oldTasks);
+        console.log(oldTasks.length);
+        for (let index = 1; index < arrOldTasks.length; index++) {
+            const element = arrOldTasks[index];
+            element.innerHTML = "";
+        }
+    }
 
-    return table;
-}
-
-const displayAllTasks = (tasksArray) => {
-    const table = document.querySelector('table');
+    let tasksArray = JSON.parse(localStorage.getItem('defaultPage'));
     tasksArray.map((newTask) => {
         let tr = document.createElement('tr');
         tr.classList.add('task-row');
@@ -194,7 +180,6 @@ const displayAllTasks = (tasksArray) => {
         tr.appendChild(td6);
         td6.appendChild(td6Btn);
         td6.appendChild(removeBtn);
-        console.log(table);
         table.appendChild(tr);
 
         td6Btn.addEventListener('click', () => {
@@ -210,12 +195,19 @@ const displayAllTasks = (tasksArray) => {
         });
         return table;
     });
+
+    return table;
 }
 
 function createDefault() {
     const defaultPage = createE("div", false, "default-page");
 
     defaultPage.appendChild(displayTaskForm());
+
+    if (JSON.parse(localStorage.getItem('defaultPage')).length > 0) {
+
+        defaultPage.appendChild(displayTableHeading());
+    }
 
     return defaultPage;
 }
