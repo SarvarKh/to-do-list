@@ -23,35 +23,42 @@ function setActiveButton(button) {
 
 const projects = {};
 
-function addProjectToProjects(newProject, allProjects) {
-    allProjects[newProject] = [];
-
-    let projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(newProject)));
-    if (projectLocalStorage.length > 0) {
-        allProjects.newProject = [];
-        defLocalStorage.map((e) => {
-            allProjects.newProject.push(e);
+function addProjectToProjects(projectInputValue, allProjects) {
+    allProjects[projectInputValue] = [];
+    let projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(projectInputValue)));
+    if (projectLocalStorage !== null) {
+        allProjects.projectInputValue = [];
+        projectLocalStorage.map((e) => {
+            allProjects.projectInputValue.push(e);
         });
-        allProjects.newProject.push(newTask);
-        localStorage.setItem(JSON.stringify(newProject), JSON.stringify(allTasks.newProject));
+        allProjects.projectInputValue.push(projectInputValue);
+        localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify(allProjects.projectInputValue));
     } else {
-        allProjects.newProject.push(newTask);
-        localStorage.setItem(JSON.stringify(newProject), JSON.stringify(allTasks.newProject));
+        allProjects.projectInputValue = [];
+        localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify([]));
     }
 }
 
 function displayProjects() {
-    
+    let projectsContainer = createE("div", false, "projects-container");
+
+    for (const key in localStorage) {
+        if (Object.hasOwnProperty.call(localStorage, key)) {
+            console.log(key.replace(/['"]+/g, ''));
+            let newProject = createE("div", key.replace(/['"]+/g, ''));
+            projectsContainer.appendChild(newProject);
+        }
+    }
+    return projectsContainer;
 }
 
 function createProject(btn) {
     btn.addEventListener('click', () => {
         const projectTitle = document.querySelector('#projectTitle');
-        
         if (projectTitle.value === '') {
             alert("Project Title's Field must be filled out"); // eslint-disable-line no-alert
         } else {
-            const newProject = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
+            const newProject = projectTitle.value;
             addProjectToProjects(newProject, projects);
             let asideBottom = document.querySelector(".aside-bottom");
             asideBottom.appendChild(displayProjects());
@@ -111,6 +118,7 @@ function createAside() {
     asideBottom.appendChild(project);
 
     let defaulBtn = createE("button", false, "aside-btn");
+    defaulBtn.setAttribute("id", "defaulBtn");
     defaulBtn.addEventListener('click', (e) => {
         if (e.target.classList.contains('active')) return;
         setActiveButton(defaulBtn);
@@ -190,7 +198,7 @@ function start() {
     container.appendChild(createMain());
     content.appendChild(container);
     content.appendChild(createFooter());
-
+    console.log(localStorage);
     setActiveButton(document.querySelector('.aside-btn'));
     loadDefault();
 }
