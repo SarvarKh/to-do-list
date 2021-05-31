@@ -25,6 +25,19 @@ const projects = {};
 
 function addProjectToProjects(newProject, allProjects) {
     allProjects[newProject] = [];
+
+    let projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(newProject)));
+    if (projectLocalStorage.length > 0) {
+        allProjects.newProject = [];
+        defLocalStorage.map((e) => {
+            allProjects.newProject.push(e);
+        });
+        allProjects.newProject.push(newTask);
+        localStorage.setItem(JSON.stringify(newProject), JSON.stringify(allTasks.newProject));
+    } else {
+        allProjects.newProject.push(newTask);
+        localStorage.setItem(JSON.stringify(newProject), JSON.stringify(allTasks.newProject));
+    }
 }
 
 function displayProjects() {
