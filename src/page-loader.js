@@ -21,6 +21,32 @@ function setActiveButton(button) {
     button.classList.add('active');
 }
 
+const projects = {};
+
+function addProjectToProjects(newProject, allProjects) {
+    allProjects[newProject] = [];
+}
+
+function displayProjects() {
+    
+}
+
+function createProject(btn) {
+    btn.addEventListener('click', () => {
+        const projectTitle = document.querySelector('#projectTitle');
+        
+        if (projectTitle.value === '') {
+            alert("Project Title's Field must be filled out"); // eslint-disable-line no-alert
+        } else {
+            const newProject = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
+            addProjectToProjects(newProject, projects);
+            let asideBottom = document.querySelector(".aside-bottom");
+            asideBottom.appendChild(displayProjects());
+        }
+    })
+    return btn;
+}
+
 function createHeader() {
     const header = createE("header");
     const headerIcon = createE("i");
@@ -86,23 +112,20 @@ function createAside() {
     asideBottom.appendChild(defaulBtn);
     aside.appendChild(asideBottom);
 
-    const createProjectBtn = createE("button", false, "aside-btn");
-    createProjectBtn.addEventListener('click', (e) => {
-        createProject();
-    })
+    const projectBtn = createE("button", false, "aside-btn");
+    let projectTitle = createE('input');
+    projectTitle.setAttribute("type", "text");
+    projectTitle.setAttribute("id", "projectTitle");
+    projectTitle.setAttribute("name", "projectTitle");
+    projectTitle.setAttribute("placeholder", "Create Project");
 
-    let inputProjectTitle = createE('input');
-    inputProjectTitle.setAttribute("type", "text");
-    inputProjectTitle.setAttribute("id", "projectTitle");
-    inputProjectTitle.setAttribute("name", "projectTitle");
-    inputProjectTitle.setAttribute("placeholder", "Create Project");
-
-    const createProjectIcon = document.createElement('i');
-    createProjectIcon.classList.add('fas');
-    createProjectIcon.classList.add('fa-plus-square');
-    createProjectBtn.appendChild(createProjectIcon);
-    createProjectBtn.appendChild(inputProjectTitle);
-    aside.appendChild(createProjectBtn);
+    const projectIcon = document.createElement('i');
+    projectIcon.classList.add('fas');
+    projectIcon.classList.add('fa-plus-square');
+    createProject(projectIcon);
+    projectBtn.appendChild(projectIcon);
+    projectBtn.appendChild(projectTitle);
+    aside.appendChild(projectBtn);
 
     return aside;
 }
