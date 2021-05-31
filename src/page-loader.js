@@ -90,12 +90,18 @@ function createAside() {
     createProjectBtn.addEventListener('click', (e) => {
         createProject();
     })
+
+    let inputProjectTitle = createE('input');
+    inputProjectTitle.setAttribute("type", "text");
+    inputProjectTitle.setAttribute("id", "projectTitle");
+    inputProjectTitle.setAttribute("name", "projectTitle");
+    inputProjectTitle.setAttribute("placeholder", "Create Project");
+
     const createProjectIcon = document.createElement('i');
     createProjectIcon.classList.add('fas');
     createProjectIcon.classList.add('fa-plus-square');
-    let createProjectTitle = createE('span', "Create Project")
     createProjectBtn.appendChild(createProjectIcon);
-    createProjectBtn.appendChild(createProjectTitle);
+    createProjectBtn.appendChild(inputProjectTitle);
     aside.appendChild(createProjectBtn);
 
     return aside;
