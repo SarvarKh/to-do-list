@@ -86,6 +86,18 @@ function createAside() {
     asideBottom.appendChild(defaulBtn);
     aside.appendChild(asideBottom);
 
+    const createProjectBtn = createE("button", false, "aside-btn");
+    createProjectBtn.addEventListener('click', (e) => {
+        createProject();
+    })
+    const createProjectIcon = document.createElement('i');
+    createProjectIcon.classList.add('fas');
+    createProjectIcon.classList.add('fa-plus-square');
+    let createProjectTitle = createE('span', "Create Project")
+    createProjectBtn.appendChild(createProjectIcon);
+    createProjectBtn.appendChild(createProjectTitle);
+    aside.appendChild(createProjectBtn);
+
     return aside;
 }
 
