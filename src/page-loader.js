@@ -39,6 +39,10 @@ function addProjectToProjects(projectInputValue, allProjects) {
     }
 }
 
+function deleteProject(btn) {
+    
+}
+
 function displayProjects() {
     let oldProjects = document.querySelector(".projects-container");
     if (oldProjects !== null) {
@@ -50,6 +54,7 @@ function displayProjects() {
         if (Object.hasOwnProperty.call(localStorage, key)) {
             console.log(key.replace(/['"]+/g, ''));
             let newProjectCon = createE("div", false, "project-container");
+            newProjectCon.setAttribute("data-projectname", key);
             let projectPart1 = createE("div", false, "project-left")
             let projectPart2 = createE("div", false, "project-right")
             let newProjectIcon = createE("i");
@@ -59,6 +64,12 @@ function displayProjects() {
             let newProjectDeleteBtn = createE("i");
             newProjectDeleteBtn.classList.add("fas");
             newProjectDeleteBtn.classList.add("fa-trash-alt");
+            // deleteProject(newProjectDeleteBtn);
+            newProjectDeleteBtn.addEventListener('click', () => {
+                newProjectCon.remove();
+                localStorage.removeItem(newProjectCon.dataset.projectname);
+            })
+
             projectPart1.appendChild(newProjectIcon);
             projectPart1.appendChild(newProject);
             projectPart2.appendChild(newProjectDeleteBtn);
