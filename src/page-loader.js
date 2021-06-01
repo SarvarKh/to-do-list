@@ -40,10 +40,15 @@ function addProjectToProjects(projectInputValue, allProjects) {
 }
 
 function displayProjects() {
-    let oldProjects = document.querySelector(".projects-container");
-    if (oldProjects !== null) {
-        oldProjects.textContent = "";
+    const oldProjects = document.querySelectorAll(".project-container");
+    if (oldProjects.length > 0) {
+        const arrOldProjects = Array.from(oldProjects);
+        for (let index = 0; index < arrOldProjects.length; index++) {
+            const element = arrOldProjects[index];
+            element.innerHTML = "";
+        }
     }
+
     let projectsContainer = createE("div", false, "projects-container");
 
     for (const key in localStorage) {

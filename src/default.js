@@ -215,6 +215,7 @@ function displayTable() {
 function createDefault() {
     const defaultPage = createE("div", false, "default-page");
     defaultPage.appendChild(displayTaskForm());
+    console.log(localStorage);
     if (localStorage.length === 0) {
         localStorage.setItem("defaultPage", JSON.stringify([]));
     }
