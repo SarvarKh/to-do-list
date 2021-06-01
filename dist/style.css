@@ -88,13 +88,20 @@ aside input {
 }
 
 .project-container {
-    padding-left: 1rem;
+    padding: 0 0.3rem 0 1rem;
     margin-bottom: 0.5rem;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    transition: padding 0.5s;
 }
 
 .project-container:hover {
     opacity: 0.7;
+    border: 1px solid #4998ff;
+    border-left: none;
+    border-right: none;
+    padding: 0.3rem 0.3rem 0.3rem 1rem;
 }
 
 .project-container i {

@@ -50,12 +50,20 @@ function displayProjects() {
         if (Object.hasOwnProperty.call(localStorage, key)) {
             console.log(key.replace(/['"]+/g, ''));
             let newProjectCon = createE("div", false, "project-container");
+            let projectPart1 = createE("div", false, "project-left")
+            let projectPart2 = createE("div", false, "project-right")
             let newProjectIcon = createE("i");
             newProjectIcon.classList.add("far");
             newProjectIcon.classList.add("fa-circle");
             let newProject = createE("span", key.replace(/['"]+/g, ''));
-            newProjectCon.appendChild(newProjectIcon);
-            newProjectCon.appendChild(newProject);
+            let newProjectDeleteBtn = createE("i");
+            newProjectDeleteBtn.classList.add("fas");
+            newProjectDeleteBtn.classList.add("fa-trash-alt");
+            projectPart1.appendChild(newProjectIcon);
+            projectPart1.appendChild(newProject);
+            projectPart2.appendChild(newProjectDeleteBtn);
+            newProjectCon.appendChild(projectPart1);
+            newProjectCon.appendChild(projectPart2);
             projectsContainer.appendChild(newProjectCon);
         }
     }
