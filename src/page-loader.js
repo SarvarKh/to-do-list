@@ -45,8 +45,14 @@ function displayProjects() {
     for (const key in localStorage) {
         if (Object.hasOwnProperty.call(localStorage, key)) {
             console.log(key.replace(/['"]+/g, ''));
-            let newProject = createE("div", key.replace(/['"]+/g, ''));
-            projectsContainer.appendChild(newProject);
+            let newProjectCon = createE("div", false, "project-container");
+            let newProjectIcon = createE("i");
+            newProjectIcon.classList.add("far");
+            newProjectIcon.classList.add("fa-circle");
+            let newProject = createE("span", key.replace(/['"]+/g, ''));
+            newProjectCon.appendChild(newProjectIcon);
+            newProjectCon.appendChild(newProject);
+            projectsContainer.appendChild(newProjectCon);
         }
     }
     return projectsContainer;
