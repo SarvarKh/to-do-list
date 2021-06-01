@@ -40,6 +40,10 @@ function addProjectToProjects(projectInputValue, allProjects) {
 }
 
 function displayProjects() {
+    let oldProjects = document.querySelector(".projects-container");
+    if (oldProjects !== null) {
+        oldProjects.textContent = "";
+    }
     let projectsContainer = createE("div", false, "projects-container");
 
     for (const key in localStorage) {
@@ -138,6 +142,8 @@ function createAside() {
     defaulBtn.appendChild(defaultBtnTitle);
     asideBottom.appendChild(defaulBtn);
     aside.appendChild(asideBottom);
+
+    asideBottom.appendChild(displayProjects());
 
     const projectBtn = createE("button", false, "aside-btn");
     let projectTitle = createE('input');
