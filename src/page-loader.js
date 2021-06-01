@@ -39,10 +39,6 @@ function addProjectToProjects(projectInputValue, allProjects) {
     }
 }
 
-function deleteProject(btn) {
-    
-}
-
 function displayProjects() {
     let oldProjects = document.querySelector(".projects-container");
     if (oldProjects !== null) {
@@ -52,7 +48,6 @@ function displayProjects() {
 
     for (const key in localStorage) {
         if (Object.hasOwnProperty.call(localStorage, key)) {
-            console.log(key.replace(/['"]+/g, ''));
             let newProjectCon = createE("div", false, "project-container");
             newProjectCon.setAttribute("data-projectname", key);
             let projectPart1 = createE("div", false, "project-left")
@@ -229,7 +224,6 @@ function start() {
     container.appendChild(createMain());
     content.appendChild(container);
     content.appendChild(createFooter());
-    console.log(localStorage);
     setActiveButton(document.querySelector('.aside-btn'));
     loadDefault();
 }

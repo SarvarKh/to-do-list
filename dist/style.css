@@ -108,6 +108,18 @@ aside input {
     margin-right: 0.3rem;
 }
 
+div[data-projectname="defaultPage"] {
+    display: none;
+}
+
+.fa-trash-alt {
+    display: none;
+}
+
+.project-container:hover .fa-trash-alt {
+    display: inline-block;
+}
+
 main {
     padding: 1.5rem;
 }
