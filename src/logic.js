@@ -1,4 +1,5 @@
 import { createProjectsHTML } from './page-loader'
+import { displayProjects } from './page-loader'
 
 function setActiveButton(button) {
     const buttons = document.querySelectorAll('.aside-btn');
@@ -55,8 +56,22 @@ const loopThroughLocalStorageKeys = (projectsContainer) => {
     }
 }
 
+const projects = {};
+
+const projectInputVerification = (projectTitle) => {
+    if (projectTitle.value === '') {
+        alert("Project Title's Field must be filled out"); // eslint-disable-line no-alert
+    } else {
+        const newProject = projectTitle.value;
+        addProjectToProjects(newProject, projects);
+        let asideBottom = document.querySelector(".aside-bottom");
+        asideBottom.appendChild(displayProjects());
+    }
+}
+
 export { setActiveButton };
 export { showCalledProject };
 export { addProjectToProjects };
 export { deleteOldProjectsFromHTML };
 export { loopThroughLocalStorageKeys };
+export { projectInputVerification };

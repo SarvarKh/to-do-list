@@ -6,6 +6,7 @@ import { setActiveButton } from './logic'
 import { addProjectToProjects } from './logic'
 import { deleteOldProjectsFromHTML } from './logic'
 import { loopThroughLocalStorageKeys } from './logic'
+import { projectInputVerification } from './logic'
 
 
 const createE = (elementName, content, className, href) => {
@@ -44,8 +45,6 @@ const createProjectsHTML = (key, projectsContainer) => {
     projectsContainer.appendChild(newProjectCon);
 }
 
-const projects = {};
-
 function displayProjects() {
     deleteOldProjectsFromHTML()
     let projectsContainer = createE("div", false, "projects-container");
@@ -56,14 +55,7 @@ function displayProjects() {
 function createProject(btn) {
     btn.addEventListener('click', () => {
         const projectTitle = document.querySelector('#projectTitle');
-        if (projectTitle.value === '') {
-            alert("Project Title's Field must be filled out"); // eslint-disable-line no-alert
-        } else {
-            const newProject = projectTitle.value;
-            addProjectToProjects(newProject, projects);
-            let asideBottom = document.querySelector(".aside-bottom");
-            asideBottom.appendChild(displayProjects());
-        }
+        projectInputVerification(projectTitle);
     })
     return btn;
 }
@@ -206,4 +198,5 @@ function start() {
 }
 
 export { createProjectsHTML };
+export { displayProjects };
 export default start
