@@ -18,4 +18,22 @@ const showCalledProject = (projectName) => {
     })
 }
 
+const addProjectToProjects = (projectInputValue, allProjects) => {
+    allProjects[projectInputValue] = [];
+    let projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(projectInputValue)));
+    if (projectLocalStorage !== null) {
+        allProjects.projectInputValue = [];
+        projectLocalStorage.map((e) => {
+            allProjects.projectInputValue.push(e);
+        });
+        allProjects.projectInputValue.push(projectInputValue);
+        localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify(allProjects.projectInputValue));
+    } else {
+        allProjects.projectInputValue = [];
+        localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify([]));
+    }
+}
+
+export { setActiveButton };
 export { showCalledProject };
+export { addProjectToProjects };

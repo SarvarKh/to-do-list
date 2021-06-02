@@ -2,6 +2,8 @@ import loadInbox from './inbox';
 import loadToday from './today';
 import loadDefault from './default';
 import { showCalledProject } from './logic'
+import { setActiveButton } from './logic'
+import { addProjectToProjects } from './logic'
 
 
 const createE = (elementName, content, className, href) => {
@@ -12,33 +14,7 @@ const createE = (elementName, content, className, href) => {
     return element;
 };
 
-function setActiveButton(button) {
-    const buttons = document.querySelectorAll('.aside-btn');
-
-    buttons.forEach((btn) => {
-      btn.classList.remove('active');
-    });
-
-    button.classList.add('active');
-}
-
 const projects = {};
-
-function addProjectToProjects(projectInputValue, allProjects) {
-    allProjects[projectInputValue] = [];
-    let projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(projectInputValue)));
-    if (projectLocalStorage !== null) {
-        allProjects.projectInputValue = [];
-        projectLocalStorage.map((e) => {
-            allProjects.projectInputValue.push(e);
-        });
-        allProjects.projectInputValue.push(projectInputValue);
-        localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify(allProjects.projectInputValue));
-    } else {
-        allProjects.projectInputValue = [];
-        localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify([]));
-    }
-}
 
 function displayProjects() {
     const oldProjects = document.querySelectorAll(".project-container");
