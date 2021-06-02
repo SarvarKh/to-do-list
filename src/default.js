@@ -198,7 +198,7 @@ function displayTable() {
     return table;
 }
 
-function createDefault() {
+function createProject() {
     const defaultPage = createE("div", false, "default-page");
     defaultPage.appendChild(displayTaskForm());
     console.log(localStorage);
@@ -216,7 +216,7 @@ function createDefault() {
 function loadProject() {
     const main = document.querySelector("#main");
     main.textContent = "";
-    main.appendChild(createDefault());
+    main.appendChild(createProject());
 }
 
 export default loadProject
