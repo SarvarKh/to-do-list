@@ -4,6 +4,7 @@ import loadDefault from './default';
 import { showCalledProject } from './logic'
 import { setActiveButton } from './logic'
 import { addProjectToProjects } from './logic'
+import { deleteOldProjectsFromHTML } from './logic'
 
 
 const createE = (elementName, content, className, href) => {
@@ -17,14 +18,7 @@ const createE = (elementName, content, className, href) => {
 const projects = {};
 
 function displayProjects() {
-    const oldProjects = document.querySelectorAll(".project-container");
-    if (oldProjects.length > 0) {
-        const arrOldProjects = Array.from(oldProjects);
-        for (let index = 0; index < arrOldProjects.length; index++) {
-            const element = arrOldProjects[index];
-            element.innerHTML = "";
-        }
-    }
+    deleteOldProjectsFromHTML()
 
     let projectsContainer = createE("div", false, "projects-container");
 

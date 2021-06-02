@@ -34,6 +34,18 @@ const addProjectToProjects = (projectInputValue, allProjects) => {
     }
 }
 
+function deleteOldProjectsFromHTML() {
+    const oldProjects = document.querySelectorAll(".project-container");
+    if (oldProjects.length > 0) {
+        const arrOldProjects = Array.from(oldProjects);
+        for (let index = 0; index < arrOldProjects.length; index++) {
+            const element = arrOldProjects[index];
+            element.innerHTML = "";
+        }
+    }
+}
+
 export { setActiveButton };
 export { showCalledProject };
 export { addProjectToProjects };
+export { deleteOldProjectsFromHTML };
