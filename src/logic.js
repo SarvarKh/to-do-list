@@ -1,3 +1,5 @@
+import { createProjectsHTML } from './page-loader'
+
 function setActiveButton(button) {
     const buttons = document.querySelectorAll('.aside-btn');
 
@@ -34,7 +36,7 @@ const addProjectToProjects = (projectInputValue, allProjects) => {
     }
 }
 
-function deleteOldProjectsFromHTML() {
+const deleteOldProjectsFromHTML = () => {
     const oldProjects = document.querySelectorAll(".project-container");
     if (oldProjects.length > 0) {
         const arrOldProjects = Array.from(oldProjects);
@@ -45,7 +47,16 @@ function deleteOldProjectsFromHTML() {
     }
 }
 
+const loopThroughLocalStorageKeys = (projectsContainer) => {
+    for (const key in localStorage) {
+        if (Object.hasOwnProperty.call(localStorage, key)) {
+            createProjectsHTML(key, projectsContainer);
+        }
+    }
+}
+
 export { setActiveButton };
 export { showCalledProject };
 export { addProjectToProjects };
 export { deleteOldProjectsFromHTML };
+export { loopThroughLocalStorageKeys };

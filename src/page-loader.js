@@ -5,6 +5,7 @@ import { showCalledProject } from './logic'
 import { setActiveButton } from './logic'
 import { addProjectToProjects } from './logic'
 import { deleteOldProjectsFromHTML } from './logic'
+import { loopThroughLocalStorageKeys } from './logic'
 
 
 const createE = (elementName, content, className, href) => {
@@ -15,43 +16,40 @@ const createE = (elementName, content, className, href) => {
     return element;
 };
 
+const createProjectsHTML = (key, projectsContainer) => {
+    let newProjectCon = createE("div", false, "project-container");
+    newProjectCon.setAttribute("data-projectname", key);
+    let projectPart1 = createE("div", false, "project-left")
+    let projectPart2 = createE("div", false, "project-right")
+    let newProjectIcon = createE("i");
+    newProjectIcon.classList.add("far");
+    newProjectIcon.classList.add("fa-circle");
+    let newProject = createE("span", key.replace(/['"]+/g, ''), 'project-name');
+    newProject.classList.add("aside-btn");
+    showCalledProject(newProject);
+    
+    let newProjectDeleteBtn = createE("i");
+    newProjectDeleteBtn.classList.add("fas");
+    newProjectDeleteBtn.classList.add("fa-trash-alt");
+    newProjectDeleteBtn.addEventListener('click', () => {
+        newProjectCon.remove();
+        localStorage.removeItem(newProjectCon.dataset.projectname);
+    })
+
+    projectPart1.appendChild(newProjectIcon);
+    projectPart1.appendChild(newProject);
+    projectPart2.appendChild(newProjectDeleteBtn);
+    newProjectCon.appendChild(projectPart1);
+    newProjectCon.appendChild(projectPart2);
+    projectsContainer.appendChild(newProjectCon);
+}
+
 const projects = {};
 
 function displayProjects() {
     deleteOldProjectsFromHTML()
-
     let projectsContainer = createE("div", false, "projects-container");
-
-    for (const key in localStorage) {
-        if (Object.hasOwnProperty.call(localStorage, key)) {
-            let newProjectCon = createE("div", false, "project-container");
-            newProjectCon.setAttribute("data-projectname", key);
-            let projectPart1 = createE("div", false, "project-left")
-            let projectPart2 = createE("div", false, "project-right")
-            let newProjectIcon = createE("i");
-            newProjectIcon.classList.add("far");
-            newProjectIcon.classList.add("fa-circle");
-            let newProject = createE("span", key.replace(/['"]+/g, ''), 'project-name');
-            newProject.classList.add("aside-btn");
-            showCalledProject(newProject);
-            
-            let newProjectDeleteBtn = createE("i");
-            newProjectDeleteBtn.classList.add("fas");
-            newProjectDeleteBtn.classList.add("fa-trash-alt");
-            // deleteProject(newProjectDeleteBtn);
-            newProjectDeleteBtn.addEventListener('click', () => {
-                newProjectCon.remove();
-                localStorage.removeItem(newProjectCon.dataset.projectname);
-            })
-
-            projectPart1.appendChild(newProjectIcon);
-            projectPart1.appendChild(newProject);
-            projectPart2.appendChild(newProjectDeleteBtn);
-            newProjectCon.appendChild(projectPart1);
-            newProjectCon.appendChild(projectPart2);
-            projectsContainer.appendChild(newProjectCon);
-        }
-    }
+    loopThroughLocalStorageKeys(projectsContainer);
     return projectsContainer;
 }
 
@@ -207,4 +205,5 @@ function start() {
     loadDefault();
 }
 
+export { createProjectsHTML };
 export default start
