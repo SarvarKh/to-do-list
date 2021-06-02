@@ -40,7 +40,7 @@ function submitForm(btn) {
         } else {
             const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
             addTaskToDefaultTasks(newTask, allTasks);
-            let defPage = document.querySelector(".default-page");
+            let defPage = document.querySelector(".project-page");
             defPage.appendChild(displayTable());
         }
     })
@@ -199,18 +199,18 @@ function displayTable() {
 }
 
 function createProject() {
-    const defaultPage = createE("div", false, "default-page");
-    defaultPage.appendChild(displayTaskForm());
+    const projectPage = createE("div", false, "project-page");
+    projectPage.appendChild(displayTaskForm());
     console.log(localStorage);
     if (localStorage.length === 0) {
         localStorage.setItem("defaultPage", JSON.stringify([]));
     }
     if (JSON.parse(localStorage.getItem('defaultPage')).length > 0) {
 
-        defaultPage.appendChild(displayTable());
+        projectPage.appendChild(displayTable());
     }
 
-    return defaultPage;
+    return projectPage;
 }
 
 function loadProject() {
