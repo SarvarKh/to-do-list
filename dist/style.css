@@ -59,7 +59,6 @@ aside {
 }
 
 .aside-btn {
-    display: flex;
     padding-left: 1rem;
     margin-bottom: 0.5rem;
     max-width: max-content;

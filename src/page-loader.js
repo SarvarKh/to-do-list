@@ -1,6 +1,7 @@
 import loadInbox from './inbox';
 import loadToday from './today';
 import loadDefault from './default';
+import { showCalledProject } from './logic'
 
 
 const createE = (elementName, content, className, href) => {
@@ -60,7 +61,10 @@ function displayProjects() {
             let newProjectIcon = createE("i");
             newProjectIcon.classList.add("far");
             newProjectIcon.classList.add("fa-circle");
-            let newProject = createE("span", key.replace(/['"]+/g, ''));
+            let newProject = createE("span", key.replace(/['"]+/g, ''), 'project-name');
+            newProject.classList.add("aside-btn");
+            showCalledProject(newProject);
+            
             let newProjectDeleteBtn = createE("i");
             newProjectDeleteBtn.classList.add("fas");
             newProjectDeleteBtn.classList.add("fa-trash-alt");
