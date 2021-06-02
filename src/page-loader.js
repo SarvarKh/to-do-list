@@ -3,19 +3,11 @@ import loadToday from './today';
 import loadDefault from './default';
 import { showCalledProject } from './logic'
 import { setActiveButton } from './logic'
-import { addProjectToProjects } from './logic'
 import { deleteOldProjectsFromHTML } from './logic'
 import { loopThroughLocalStorageKeys } from './logic'
 import { projectInputVerification } from './logic'
+import { createE } from './logic'
 
-
-const createE = (elementName, content, className, href) => {
-    const element = document.createElement(elementName);
-    if (content) { element.innerHTML = content;}
-    if (className) { element.classList.toggle(className);}
-    if (href) { element.href = href;}
-    return element;
-};
 
 const createProjectsHTML = (key, projectsContainer) => {
     let newProjectCon = createE("div", false, "project-container");

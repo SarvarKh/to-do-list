@@ -1,6 +1,14 @@
 import { createProjectsHTML } from './page-loader'
 import { displayProjects } from './page-loader'
 
+const createE = (elementName, content, className, href) => {
+    const element = document.createElement(elementName);
+    if (content) { element.innerHTML = content;}
+    if (className) { element.classList.toggle(className);}
+    if (href) { element.href = href;}
+    return element;
+};
+
 function setActiveButton(button) {
     const buttons = document.querySelectorAll('.aside-btn');
 
@@ -69,9 +77,9 @@ const projectInputVerification = (projectTitle) => {
     }
 }
 
+export { createE }
 export { setActiveButton };
 export { showCalledProject };
-export { addProjectToProjects };
 export { deleteOldProjectsFromHTML };
 export { loopThroughLocalStorageKeys };
 export { projectInputVerification };
