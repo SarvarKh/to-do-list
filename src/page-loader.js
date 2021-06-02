@@ -79,11 +79,7 @@ function createAside() {
     let asideBottom = createE("div", false, "aside-bottom");
 
     let inboxBtn = createE("button", false, "aside-btn");
-    inboxBtn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('active')) return;
-        setActiveButton(inboxBtn);
-        loadInbox();
-    })
+    showCalledProject(inboxBtn, loadInbox);
     const inboxBtnIcon = document.createElement('i');
     inboxBtnIcon.classList.add('fas');
     inboxBtnIcon.classList.add('fa-inbox');
@@ -93,11 +89,7 @@ function createAside() {
     asideTop.appendChild(inboxBtn);
 
     let todayBtn = createE("button", false, "aside-btn");
-    todayBtn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('active')) return;
-        setActiveButton(todayBtn);
-        loadToday();
-    })
+    showCalledProject(todayBtn, loadToday);
     const todayBtnIcon = document.createElement('i');
     todayBtnIcon.classList.add('fas');
     todayBtnIcon.classList.add('fa-arrow-circle-down');
@@ -112,11 +104,7 @@ function createAside() {
 
     let defaulBtn = createE("button", false, "aside-btn");
     defaulBtn.setAttribute("id", "defaulBtn");
-    defaulBtn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('active')) return;
-        setActiveButton(defaulBtn);
-        loadDefault();
-    })
+    showCalledProject(defaulBtn, loadDefault);
     const defaulBtnIcon = document.createElement('i');
     defaulBtnIcon.classList.add('far');
     defaulBtnIcon.classList.add('fa-circle');

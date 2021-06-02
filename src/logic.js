@@ -12,12 +12,12 @@ function setActiveButton(button) {
 }
 
 
-const showCalledProject = (projectName) => {
+const showCalledProject = (projectName, loadProject) => {
     projectName.addEventListener('click', (e) => {
         if (e.target.classList.contains('active')) return;
         console.log(e.target.textContent);
         setActiveButton(projectName);
-        // loadToday();
+        loadProject();
     })
 }
 
