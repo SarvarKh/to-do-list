@@ -1,6 +1,6 @@
 import loadInbox from './inbox';
 import loadToday from './today';
-import loadDefault from './default';
+import loadProject from './default';
 import { showCalledProject } from './logic'
 import { setActiveButton } from './logic'
 import { deleteOldProjectsFromHTML } from './logic'
@@ -19,7 +19,7 @@ const createProjectsHTML = (key, projectsContainer) => {
     newProjectIcon.classList.add("fa-circle");
     let newProject = createE("span", key.replace(/['"]+/g, ''), 'project-name');
     newProject.classList.add("aside-btn");
-    showCalledProject(newProject);
+    showCalledProject(newProject, loadProject);
     
     let newProjectDeleteBtn = createE("i");
     newProjectDeleteBtn.classList.add("fas");
@@ -96,7 +96,7 @@ function createAside() {
 
     let defaulBtn = createE("button", false, "aside-btn");
     defaulBtn.setAttribute("id", "defaulBtn");
-    showCalledProject(defaulBtn, loadDefault);
+    showCalledProject(defaulBtn, loadProject);
     const defaulBtnIcon = document.createElement('i');
     defaulBtnIcon.classList.add('far');
     defaulBtnIcon.classList.add('fa-circle');
@@ -174,7 +174,7 @@ function start() {
     content.appendChild(container);
     content.appendChild(createFooter());
     setActiveButton(document.querySelector('.aside-btn'));
-    loadDefault();
+    loadProject();
 }
 
 export { createProjectsHTML };

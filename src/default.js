@@ -213,10 +213,10 @@ function createDefault() {
     return defaultPage;
 }
 
-function loadDefault() {
+function loadProject() {
     const main = document.querySelector("#main");
     main.textContent = "";
     main.appendChild(createDefault());
 }
 
-export default loadDefault
+export default loadProject
