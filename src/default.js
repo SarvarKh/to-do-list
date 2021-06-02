@@ -1,19 +1,5 @@
-const createE = (elementName, content, className, href) => {
-    const element = document.createElement(elementName);
-    if (content) { element.innerHTML = content;}
-    if (className) { element.classList.toggle(className);}
-    if (href) { element.href = href;}
-    return element;
-};
-
-function Task(title, description, dueDate, priority, notes, checklist) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.priority = priority;
-    this.notes = notes;
-    this.checklist = checklist;
-}
+import { createE } from './logic'
+import { Task } from './logic'
 
 const allTasks = {
     default: [],
