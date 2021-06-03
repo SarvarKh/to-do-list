@@ -6,22 +6,39 @@ const allTasks = {
     today: []
 };
 
-function addTaskToDefaultTasks(newTask, tasksObj) {
-    let defLocalStorage = JSON.parse(localStorage.getItem('Default'));
+function addTaskToDefaultTasks(newTask, tasksObj, key) {
+    let defLocalStorage;
+    if (key === undefined) {
+        defLocalStorage = JSON.parse(localStorage.getItem('Default'));
+    } else {
+        defLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key)));
+    }
+
     if (defLocalStorage.length > 0) {
         tasksObj.default = [];
         defLocalStorage.map((e) => {
             tasksObj.default.push(e);
         });
         tasksObj.default.push(newTask);
-        localStorage.setItem("Default", JSON.stringify(allTasks.default));
+        
+
+        if (key === undefined) {
+            localStorage.setItem("Default", JSON.stringify(allTasks.default));
+        } else {
+            localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+        }
+
     } else {
         tasksObj.default.push(newTask);
-        localStorage.setItem("Default", JSON.stringify(allTasks.default));
+        if (key === undefined) {
+            localStorage.setItem("Default", JSON.stringify(allTasks.default));
+        } else {
+            localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+        }
     }
 }
 
-function submitForm(btn) {
+function submitForm(btn, key) {
     btn.addEventListener('click', () => {
         const title = document.querySelector('#title');
         const description = document.querySelector('#description');
@@ -39,15 +56,15 @@ function submitForm(btn) {
             alert('Fields must be filled out'); // eslint-disable-line no-alert
         } else {
             const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
-            addTaskToDefaultTasks(newTask, allTasks);
+            addTaskToDefaultTasks(newTask, allTasks, key);
             let defPage = document.querySelector(".project-page");
-            defPage.appendChild(displayTable());
+            defPage.appendChild(displayTable(key));
         }
     })
     return btn;
 }
 
-function displayTaskForm() {
+function displayTaskForm(key) {
     const form = createE("div", false, "form");
     const input1 = createE("input");
     input1.setAttribute("type", "text");
@@ -98,7 +115,7 @@ function displayTaskForm() {
     input6Label.setAttribute("for", "checklist");
 
     const addTaskbtn = createE("button");
-    submitForm(addTaskbtn);
+    submitForm(addTaskbtn, key);
     const addTaskBtnIcon = createE("i");
     addTaskBtnIcon.classList.add("fas");
     addTaskBtnIcon.classList.add("fa-plus-circle");
@@ -210,7 +227,7 @@ function displayTable(key) {
 
 function createProject(key) {
     const projectPage = createE("div", false, "project-page");
-    projectPage.appendChild(displayTaskForm());
+    projectPage.appendChild(displayTaskForm(key));
     console.log(localStorage);
     if (localStorage.length === 0) {
         localStorage.setItem("Default", JSON.stringify([]));
