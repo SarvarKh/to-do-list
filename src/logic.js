@@ -150,6 +150,26 @@ function submitForm(btn, key) {
     return btn;
 }
 
+function deleteOldTasks() {
+    const oldTasks = document.querySelectorAll("tr");
+    if (oldTasks.length > 0) {
+        const arrOldTasks = Array.from(oldTasks);
+        for (let index = 0; index < arrOldTasks.length; index++) {
+            const element = arrOldTasks[index];
+            element.innerHTML = "";
+        }
+    }
+}
+
+function setTasksArray(tasksArray, key) {
+    if (key === undefined) {
+        tasksArray = JSON.parse(localStorage.getItem('Default'));
+    } else {
+        tasksArray = JSON.parse(localStorage.getItem(JSON.stringify(key)));
+    }
+    return tasksArray;
+}
+
 export { createE }
 export { setActiveButton };
 export { showCalledProject };
@@ -159,3 +179,5 @@ export { projectInputVerification };
 export { Task };
 export { addTaskToDefaultTasks };
 export { submitForm };
+export { deleteOldTasks };
+export { setTasksArray };

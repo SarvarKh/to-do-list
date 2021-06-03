@@ -2,6 +2,8 @@ import { createE } from './logic'
 import { Task } from './logic'
 import { addTaskToDefaultTasks } from './logic'
 import { submitForm } from './logic'
+import { deleteOldTasks } from './logic'
+import { setTasksArray } from './logic'
 
 function displayTaskForm(key) {
     const form = createE("div", false, "form");
@@ -92,20 +94,11 @@ function displayTable(key) {
     trHeading.appendChild(trh5);
     trHeading.appendChild(trh6);
     table.appendChild(trHeading);
-    const oldTasks = document.querySelectorAll("tr");
-    if (oldTasks.length > 0) {
-        const arrOldTasks = Array.from(oldTasks);
-        for (let index = 0; index < arrOldTasks.length; index++) {
-            const element = arrOldTasks[index];
-            element.innerHTML = "";
-        }
-    }
+
+    deleteOldTasks();
     let tasksArray;
-    if (key === undefined) {
-        tasksArray = JSON.parse(localStorage.getItem('Default'));
-    } else {
-        tasksArray = JSON.parse(localStorage.getItem(JSON.stringify(key)));
-    }
+    tasksArray = setTasksArray(tasksArray, key);
+    
     tasksArray.map((newTask) => {
         let tr = document.createElement('tr');
         tr.classList.add('task-row');
