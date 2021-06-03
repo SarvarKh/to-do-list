@@ -7,17 +7,17 @@ const allTasks = {
 };
 
 function addTaskToDefaultTasks(newTask, tasksObj) {
-    let defLocalStorage = JSON.parse(localStorage.getItem('defaultPage'));
+    let defLocalStorage = JSON.parse(localStorage.getItem('Default'));
     if (defLocalStorage.length > 0) {
         tasksObj.default = [];
         defLocalStorage.map((e) => {
             tasksObj.default.push(e);
         });
         tasksObj.default.push(newTask);
-        localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
+        localStorage.setItem("Default", JSON.stringify(allTasks.default));
     } else {
         tasksObj.default.push(newTask);
-        localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
+        localStorage.setItem("Default", JSON.stringify(allTasks.default));
     }
 }
 
@@ -145,7 +145,7 @@ function displayTable() {
         }
     }
 
-    let tasksArray = JSON.parse(localStorage.getItem('defaultPage'));
+    let tasksArray = JSON.parse(localStorage.getItem('Default'));
     tasksArray.map((newTask) => {
         let tr = document.createElement('tr');
         tr.classList.add('task-row');
@@ -190,7 +190,7 @@ function displayTable() {
         removeBtn.addEventListener('click', () => {
             tr.remove();
             allTasks.default.splice(tr.dataset.index, 1);
-            localStorage.setItem("defaultPage", JSON.stringify(allTasks.default));
+            localStorage.setItem("Default", JSON.stringify(allTasks.default));
         });
         return table;
     });
@@ -198,14 +198,14 @@ function displayTable() {
     return table;
 }
 
-function createProject() {
+function createProject(key) {
     const projectPage = createE("div", false, "project-page");
     projectPage.appendChild(displayTaskForm());
     console.log(localStorage);
     if (localStorage.length === 0) {
-        localStorage.setItem("defaultPage", JSON.stringify([]));
+        localStorage.setItem("Default", JSON.stringify([]));
     }
-    if (JSON.parse(localStorage.getItem('defaultPage')).length > 0) {
+    if (JSON.parse(localStorage.getItem('Default')).length > 0) {
 
         projectPage.appendChild(displayTable());
     }
@@ -213,10 +213,10 @@ function createProject() {
     return projectPage;
 }
 
-function loadProject() {
+function loadProject(key) {
     const main = document.querySelector("#main");
     main.textContent = "";
-    main.appendChild(createProject());
+    main.appendChild(createProject(key));
 }
 
 export default loadProject

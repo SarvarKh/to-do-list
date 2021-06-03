@@ -107,7 +107,7 @@ aside input {
     margin-right: 0.3rem;
 }
 
-div[data-projectname="defaultPage"] {
+div[data-projectname="Default"] {
     display: none;
 }
 

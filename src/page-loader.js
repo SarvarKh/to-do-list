@@ -19,7 +19,7 @@ const createProjectsHTML = (key, projectsContainer) => {
     newProjectIcon.classList.add("fa-circle");
     let newProject = createE("span", key.replace(/['"]+/g, ''), 'project-name');
     newProject.classList.add("aside-btn");
-    showCalledProject(newProject, loadProject);
+    showCalledProject(newProject, loadProject, key);
     
     let newProjectDeleteBtn = createE("i");
     newProjectDeleteBtn.classList.add("fas");
