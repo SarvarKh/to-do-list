@@ -170,6 +170,16 @@ function setTasksArray(tasksArray, key) {
     return tasksArray;
 }
 
+function changeTaskStatus(td6Btn) {
+    td6Btn.addEventListener('click', () => {
+      if (td6Btn.textContent === 'Closed') {
+        td6Btn.textContent = 'Open';
+      } else {
+        td6Btn.textContent = 'Closed';
+      }
+    });
+}
+
 export { createE }
 export { setActiveButton };
 export { showCalledProject };
@@ -181,3 +191,4 @@ export { addTaskToDefaultTasks };
 export { submitForm };
 export { deleteOldTasks };
 export { setTasksArray };
+export { changeTaskStatus };

@@ -4,6 +4,7 @@ import { addTaskToDefaultTasks } from './logic'
 import { submitForm } from './logic'
 import { deleteOldTasks } from './logic'
 import { setTasksArray } from './logic'
+import { changeTaskStatus } from './logic'
 
 function displayTaskForm(key) {
     const form = createE("div", false, "form");
@@ -98,7 +99,7 @@ function displayTable(key) {
     deleteOldTasks();
     let tasksArray;
     tasksArray = setTasksArray(tasksArray, key);
-    
+
     tasksArray.map((newTask) => {
         let tr = document.createElement('tr');
         tr.classList.add('task-row');
@@ -132,13 +133,7 @@ function displayTable(key) {
         td6.appendChild(removeBtn);
         table.appendChild(tr);
 
-        td6Btn.addEventListener('click', () => {
-          if (td6Btn.textContent === 'Closed') {
-            td6Btn.textContent = 'Open';
-          } else {
-            td6Btn.textContent = 'Closed';
-          }
-        });
+        changeTaskStatus(td6Btn);
       
         removeBtn.addEventListener('click', () => {
             tr.remove();
