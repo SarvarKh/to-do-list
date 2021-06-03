@@ -6,6 +6,7 @@ import { deleteOldTasks } from './logic'
 import { setTasksArray } from './logic'
 import { changeTaskStatus } from './logic'
 import { removeTask } from './logic'
+import { verifyAndDisplayTable } from './logic'
 
 function displayTaskForm(key) {
     const form = createE("div", false, "form");
@@ -146,13 +147,7 @@ function createProject(key) {
     const projectPage = createE("div", false, "project-page");
     projectPage.appendChild(displayTaskForm(key));
     console.log(localStorage);
-    if (localStorage.length === 0) {
-        localStorage.setItem("Default", JSON.stringify([]));
-    }
-    if (JSON.parse(localStorage.getItem('Default')).length > 0) {
-
-        projectPage.appendChild(displayTable(key));
-    }
+    verifyAndDisplayTable(projectPage, key);
 
     return projectPage;
 }

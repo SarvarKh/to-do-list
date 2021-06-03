@@ -194,6 +194,15 @@ function removeTask(removeBtn, tr, key) {
     });
 }
 
+function verifyAndDisplayTable(projectPage, key) {
+    if (localStorage.length === 0) {
+        localStorage.setItem("Default", JSON.stringify([]));
+    }
+    if (JSON.parse(localStorage.getItem('Default')).length > 0) {
+
+        projectPage.appendChild(displayTable(key));
+    }
+}
 
 export { createE }
 export { setActiveButton };
@@ -208,3 +217,4 @@ export { deleteOldTasks };
 export { setTasksArray };
 export { changeTaskStatus };
 export { removeTask };
+export { verifyAndDisplayTable };
