@@ -5,6 +5,7 @@ import { submitForm } from './logic'
 import { deleteOldTasks } from './logic'
 import { setTasksArray } from './logic'
 import { changeTaskStatus } from './logic'
+import { removeTask } from './logic'
 
 function displayTaskForm(key) {
     const form = createE("div", false, "form");
@@ -134,18 +135,7 @@ function displayTable(key) {
         table.appendChild(tr);
 
         changeTaskStatus(td6Btn);
-      
-        removeBtn.addEventListener('click', () => {
-            tr.remove();
-            allTasks.default.splice(tr.dataset.index, 1);
-
-            if (key === undefined) {
-                localStorage.setItem("Default", JSON.stringify(allTasks.default));
-            } else {
-                localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
-            }
-            
-        });
+        removeTask(removeBtn, tr, key);
         return table;
     });
 

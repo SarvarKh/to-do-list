@@ -180,6 +180,21 @@ function changeTaskStatus(td6Btn) {
     });
 }
 
+function removeTask(removeBtn, tr, key) {
+    removeBtn.addEventListener('click', () => {
+        tr.remove();
+        allTasks.default.splice(tr.dataset.index, 1);
+    
+        if (key === undefined) {
+            localStorage.setItem("Default", JSON.stringify(allTasks.default));
+        } else {
+            localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+        }
+        
+    });
+}
+
+
 export { createE }
 export { setActiveButton };
 export { showCalledProject };
@@ -192,3 +207,4 @@ export { submitForm };
 export { deleteOldTasks };
 export { setTasksArray };
 export { changeTaskStatus };
+export { removeTask };
