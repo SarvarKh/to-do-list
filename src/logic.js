@@ -78,7 +78,7 @@ const projectInputVerification = (projectTitle) => {
     }
 }
 
-function Task(title, description, dueDate, priority, notes, checklist) {
+const Task = (title, description, dueDate, priority, notes, checklist) => {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -92,7 +92,7 @@ const allTasks = {
     today: []
 };
 
-function addTaskToDefaultTasks(newTask, tasksObj, key) {
+const addTaskToDefaultTasks = (newTask, tasksObj, key) => {
     let defLocalStorage;
     if (key === undefined) {
         defLocalStorage = JSON.parse(localStorage.getItem('Default'));
@@ -124,7 +124,7 @@ function addTaskToDefaultTasks(newTask, tasksObj, key) {
     }
 }
 
-function submitForm(btn, key) {
+const submitForm = (btn, key) => {
     btn.addEventListener('click', () => {
         const title = document.querySelector('#title');
         const description = document.querySelector('#description');
@@ -150,7 +150,7 @@ function submitForm(btn, key) {
     return btn;
 }
 
-function deleteOldTasks() {
+const deleteOldTasks = () => {
     const oldTasks = document.querySelectorAll("tr");
     if (oldTasks.length > 0) {
         const arrOldTasks = Array.from(oldTasks);
@@ -170,7 +170,7 @@ function setTasksArray(tasksArray, key) {
     return tasksArray;
 }
 
-function changeTaskStatus(td6Btn) {
+const changeTaskStatus = (td6Btn) => {
     td6Btn.addEventListener('click', () => {
       if (td6Btn.textContent === 'Closed') {
         td6Btn.textContent = 'Open';
@@ -180,7 +180,7 @@ function changeTaskStatus(td6Btn) {
     });
 }
 
-function removeTask(removeBtn, tr, key) {
+const removeTask = (removeBtn, tr, key) => {
     removeBtn.addEventListener('click', () => {
         tr.remove();
         allTasks.default.splice(tr.dataset.index, 1);
@@ -194,7 +194,7 @@ function removeTask(removeBtn, tr, key) {
     });
 }
 
-function verifyAndDisplayTable(projectPage, key) {
+const verifyAndDisplayTable = (projectPage, key) => {
     if (localStorage.length === 0) {
         localStorage.setItem("Default", JSON.stringify([]));
     }
