@@ -1,5 +1,6 @@
 import { createProjectsHTML } from './page-loader'
 import { displayProjects } from './page-loader'
+import { displayTable } from './default'
 
 const createE = (elementName, content, className, href) => {
     const element = document.createElement(elementName);
@@ -86,6 +87,69 @@ function Task(title, description, dueDate, priority, notes, checklist) {
     this.checklist = checklist;
 }
 
+const allTasks = {
+    default: [],
+    today: []
+};
+
+function addTaskToDefaultTasks(newTask, tasksObj, key) {
+    let defLocalStorage;
+    if (key === undefined) {
+        defLocalStorage = JSON.parse(localStorage.getItem('Default'));
+    } else {
+        defLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key)));
+    }
+
+    if (defLocalStorage.length > 0) {
+        tasksObj.default = [];
+        defLocalStorage.map((e) => {
+            tasksObj.default.push(e);
+        });
+        tasksObj.default.push(newTask);
+        
+
+        if (key === undefined) {
+            localStorage.setItem("Default", JSON.stringify(allTasks.default));
+        } else {
+            localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+        }
+
+    } else {
+        tasksObj.default.push(newTask);
+        if (key === undefined) {
+            localStorage.setItem("Default", JSON.stringify(allTasks.default));
+        } else {
+            localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+        }
+    }
+}
+
+function submitForm(btn, key) {
+    btn.addEventListener('click', () => {
+        const title = document.querySelector('#title');
+        const description = document.querySelector('#description');
+        const dueDate = document.querySelector('#dueDate');
+        const priority = document.querySelector('#priority');
+        const notes = document.querySelector('#notes');
+        let checklist = document.querySelector('#checklist');
+        
+        if (checklist.checked) {
+            checklist.status = "Closed";
+        } else {
+            checklist.status = "Open";
+        }
+        if (title.value === '' || description.value === '' || dueDate.value === '' || priority.value === '' || notes.value === '') {
+            alert('Fields must be filled out'); // eslint-disable-line no-alert
+        } else {
+            const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
+            addTaskToDefaultTasks(newTask, allTasks, key);
+            let defPage = document.querySelector(".project-page");
+            defPage.appendChild(displayTable(key));
+        }
+    })
+    return btn;
+}
+
 export { createE }
 export { setActiveButton };
 export { showCalledProject };
@@ -93,3 +157,5 @@ export { deleteOldProjectsFromHTML };
 export { loopThroughLocalStorageKeys };
 export { projectInputVerification };
 export { Task };
+export { addTaskToDefaultTasks };
+export { submitForm };
