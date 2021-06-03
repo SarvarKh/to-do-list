@@ -120,7 +120,7 @@ function displayTaskForm() {
     return form;
 }
 
-function displayTable() {
+function displayTable(key) {
     const table = createE("table");
     const trHeading = createE("tr");
     const trh1 = createE("th", "Title");
@@ -144,8 +144,12 @@ function displayTable() {
             element.innerHTML = "";
         }
     }
-
-    let tasksArray = JSON.parse(localStorage.getItem('Default'));
+    let tasksArray;
+    if (key === undefined) {
+        tasksArray = JSON.parse(localStorage.getItem('Default'));
+    } else {
+        tasksArray = JSON.parse(localStorage.getItem(JSON.stringify(key)));
+    }
     tasksArray.map((newTask) => {
         let tr = document.createElement('tr');
         tr.classList.add('task-row');
@@ -190,7 +194,13 @@ function displayTable() {
         removeBtn.addEventListener('click', () => {
             tr.remove();
             allTasks.default.splice(tr.dataset.index, 1);
-            localStorage.setItem("Default", JSON.stringify(allTasks.default));
+
+            if (key === undefined) {
+                localStorage.setItem("Default", JSON.stringify(allTasks.default));
+            } else {
+                localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+            }
+            
         });
         return table;
     });
@@ -207,7 +217,7 @@ function createProject(key) {
     }
     if (JSON.parse(localStorage.getItem('Default')).length > 0) {
 
-        projectPage.appendChild(displayTable());
+        projectPage.appendChild(displayTable(key));
     }
 
     return projectPage;
