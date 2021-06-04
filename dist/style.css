@@ -56,10 +56,10 @@ aside {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
+    padding-left: 0.5rem;
 }
 
 .aside-btn {
-    padding-left: 1rem;
     margin-bottom: 0.5rem;
     max-width: max-content;
 }
@@ -74,10 +74,6 @@ aside {
     margin-bottom: 2rem;
 }
 
-.aside-bottom > div {
-    margin-bottom: 0.3rem;
-}
-
 aside input {
     padding: 0.5rem;
 }
@@ -86,9 +82,13 @@ aside input {
     padding: 0.5rem 0.3rem 0.5rem 0;
 }
 
+#defaulBtn {
+    padding-left: 1rem;
+    margin-top: 0.3rem;
+}
+
 .project-container {
-    padding: 0 0.3rem 0 1rem;
-    margin-bottom: 0.5rem;
+    padding-left: 1rem;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -105,6 +105,23 @@ aside input {
 
 .project-container i {
     margin-right: 0.3rem;
+}
+
+.project-left {
+    margin: 0.25rem 0 0.25rem 0;
+}
+
+.active {
+    opacity: 0.7;
+    border: 1px solid #4998ff;
+    border-left: none;
+    border-right: none;
+    padding: 0.1rem 0.1rem 0.1rem 0.5rem;
+    transition: padding 0.5s;
+}
+
+.active:hover {
+    padding: 0;
 }
 
 div[data-projectname="Default"] {
