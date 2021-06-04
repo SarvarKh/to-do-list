@@ -133,7 +133,6 @@ function displayTable(key) {
 function createProject(key) {
     const projectPage = createE("div", false, "project-page");
     projectPage.appendChild(displayTaskForm(key));
-    console.log(localStorage);
     verifyAndDisplayTable(projectPage, key);
 
     return projectPage;

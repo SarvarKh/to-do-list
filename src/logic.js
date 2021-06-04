@@ -24,7 +24,6 @@ function setActiveButton(button) {
 const showCalledProject = (projectName, loadProject, key) => {
     projectName.addEventListener('click', (e) => {
         if (e.target.classList.contains('active')) return;
-        console.log(e.target.textContent);
         setActiveButton(projectName);
         loadProject(key);
     })
