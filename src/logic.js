@@ -78,7 +78,7 @@ const projectInputVerification = (projectTitle) => {
     }
 }
 
-const Task = (title, description, dueDate, priority, notes, checklist) => {
+function Task(title, description, dueDate, priority, notes, checklist) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -204,13 +204,22 @@ const verifyAndDisplayTable = (projectPage, key) => {
     }
 }
 
+function setTasksArrayForCustomPages(tasksArray) {
+    let arr = [];
+    const keys = Object.keys(localStorage);
+    keys.forEach((key, index) => {
+        arr.push(JSON.parse(localStorage[key]));
+    })
+    tasksArray = arr.flat();
+    return tasksArray;
+}
+
 export { createE }
 export { setActiveButton };
 export { showCalledProject };
 export { deleteOldProjectsFromHTML };
 export { loopThroughLocalStorageKeys };
 export { projectInputVerification };
-export { Task };
 export { addTaskToDefaultTasks };
 export { submitForm };
 export { deleteOldTasks };
@@ -218,3 +227,4 @@ export { setTasksArray };
 export { changeTaskStatus };
 export { removeTask };
 export { verifyAndDisplayTable };
+export { setTasksArrayForCustomPages };

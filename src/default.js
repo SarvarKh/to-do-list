@@ -1,5 +1,4 @@
 import { createE } from './logic'
-import { Task } from './logic'
 import { addTaskToDefaultTasks } from './logic'
 import { submitForm } from './logic'
 import { deleteOldTasks } from './logic'

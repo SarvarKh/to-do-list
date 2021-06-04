@@ -2,16 +2,7 @@ import { createE } from './logic'
 import { deleteOldTasks } from './logic'
 import { changeTaskStatus } from './logic'
 import { removeTask } from './logic'
-
-function setTasksArray(tasksArray) {
-    let arr = [];
-    const keys = Object.keys(localStorage);
-    keys.forEach((key, index) => {
-        arr.push(JSON.parse(localStorage[key]));
-    })
-    tasksArray = arr.flat();
-    return tasksArray;
-}
+import { setTasksArrayForCustomPages } from './logic'
 
 function displayTable() {
     const table = createE("table");
@@ -32,7 +23,7 @@ function displayTable() {
 
     deleteOldTasks();
     let tasksArray;
-    tasksArray = setTasksArray(tasksArray);
+    tasksArray = setTasksArrayForCustomPages(tasksArray);
     
     tasksArray.map((newTask) => {
         let tr = document.createElement('tr');
@@ -76,7 +67,7 @@ function displayTable() {
 }
 
 function createToday() {
-    const todayPage = createE("div", "Today's todos:");
+    const todayPage = createE("div");
     todayPage.appendChild(displayTable());
     return todayPage;
 }
