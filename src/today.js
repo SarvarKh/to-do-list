@@ -78,4 +78,5 @@ function loadToday() {
     main.appendChild(createToday());
 }
 
+export { displayTable };
 export default loadToday

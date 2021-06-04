@@ -208,7 +208,8 @@ function setTasksArrayForCustomPages(tasksArray) {
     let arr = [];
     const keys = Object.keys(localStorage);
     keys.forEach((key, index) => {
-        arr.push(JSON.parse(localStorage[key]));
+        console.log(JSON.parse(localStorage[key]));
+        // arr.push(JSON.parse(localStorage[key]));
     })
     tasksArray = arr.flat();
     return tasksArray;

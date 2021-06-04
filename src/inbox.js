@@ -1,3 +1,5 @@
+import { displayTable } from './today'
+
 const createE = (elementName, content, className, href) => {
     const element = document.createElement(elementName);
     if (content) { element.innerHTML = content;}
@@ -7,8 +9,9 @@ const createE = (elementName, content, className, href) => {
 };
 
 function createInbox() {
-    const defaultPage = createE("div", "Hey this is from Inbox.js!");
-    return defaultPage;
+    const inboxPage = createE("div", "Hey this is from Inbox.js!");
+    inboxPage.appendChild(displayTable());
+    return inboxPage;
 }
 
 function loadInbox() {
