@@ -202,7 +202,7 @@ const verifyAndDisplayTable = (projectPage, key) => {
     
 }
 
-function setTasksArrayForCustomPages(tasksArray) {
+const setTasksArrayForCustomPages = (tasksArray) => {
     let arr = [];
     const keys = Object.keys(localStorage);
     keys.forEach((key, index) => {
@@ -212,7 +212,7 @@ function setTasksArrayForCustomPages(tasksArray) {
     return tasksArray;
 }
 
-function setTasksArrayForToday(tasksArray) {
+const setTasksArrayForToday = (tasksArray) => {
     let today = new Date();
     let arr = [];
     const keys = Object.keys(localStorage);
@@ -230,6 +230,25 @@ function setTasksArrayForToday(tasksArray) {
     return tasksArray;
 }
 
+const displayHeadingIfThereIsItem = (key, table) => {
+    if (JSON.parse(localStorage.getItem('Default')).length > 0 || (localStorage.getItem(JSON.stringify(key)) !== null && JSON.parse(localStorage.getItem(JSON.stringify(key))).length > 0)) {
+        const trHeading = createE("tr");
+        const trh1 = createE("th", "Title");
+        const trh2 = createE("th", "Description");
+        const trh3 = createE("th", "Due Date");
+        const trh4 = createE("th", "Priority");
+        const trh5 = createE("th", "Notes");
+        const trh6 = createE("th", "Status");
+        trHeading.appendChild(trh1);
+        trHeading.appendChild(trh2);
+        trHeading.appendChild(trh3);
+        trHeading.appendChild(trh4);
+        trHeading.appendChild(trh5);
+        trHeading.appendChild(trh6);
+        table.appendChild(trHeading);
+    }
+}
+
 export { createE }
 export { setActiveButton };
 export { showCalledProject };
@@ -245,3 +264,4 @@ export { removeTask };
 export { verifyAndDisplayTable };
 export { setTasksArrayForCustomPages };
 export { setTasksArrayForToday };
+export { displayHeadingIfThereIsItem };
