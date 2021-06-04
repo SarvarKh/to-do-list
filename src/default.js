@@ -82,20 +82,22 @@ function displayTaskForm(key) {
 
 function displayTable(key) {
     const table = createE("table");
-    const trHeading = createE("tr");
-    const trh1 = createE("th", "Title");
-    const trh2 = createE("th", "Description");
-    const trh3 = createE("th", "Due Date");
-    const trh4 = createE("th", "Priority");
-    const trh5 = createE("th", "Notes");
-    const trh6 = createE("th", "Status");
-    trHeading.appendChild(trh1);
-    trHeading.appendChild(trh2);
-    trHeading.appendChild(trh3);
-    trHeading.appendChild(trh4);
-    trHeading.appendChild(trh5);
-    trHeading.appendChild(trh6);
-    table.appendChild(trHeading);
+    if (JSON.parse(localStorage.getItem('Default')).length > 0 || (localStorage.getItem(JSON.stringify(key)) !== null && JSON.parse(localStorage.getItem(JSON.stringify(key))).length > 0)) {
+        const trHeading = createE("tr");
+        const trh1 = createE("th", "Title");
+        const trh2 = createE("th", "Description");
+        const trh3 = createE("th", "Due Date");
+        const trh4 = createE("th", "Priority");
+        const trh5 = createE("th", "Notes");
+        const trh6 = createE("th", "Status");
+        trHeading.appendChild(trh1);
+        trHeading.appendChild(trh2);
+        trHeading.appendChild(trh3);
+        trHeading.appendChild(trh4);
+        trHeading.appendChild(trh5);
+        trHeading.appendChild(trh6);
+        table.appendChild(trHeading);
+    }
 
     deleteOldTasks();
     let tasksArray;
