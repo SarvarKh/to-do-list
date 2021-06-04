@@ -2,7 +2,7 @@ import { createE } from './logic'
 import { deleteOldTasks } from './logic'
 import { changeTaskStatus } from './logic'
 import { removeTask } from './logic'
-import { setTasksArrayForCustomPages } from './logic'
+import { setTasksArrayForToday } from './logic'
 
 function displayTable() {
     const table = createE("table");
@@ -23,7 +23,7 @@ function displayTable() {
 
     deleteOldTasks();
     let tasksArray;
-    tasksArray = setTasksArrayForCustomPages(tasksArray);
+    tasksArray = setTasksArrayForToday(tasksArray);
     
     tasksArray.map((newTask) => {
         let tr = document.createElement('tr');

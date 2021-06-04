@@ -208,10 +208,27 @@ function setTasksArrayForCustomPages(tasksArray) {
     let arr = [];
     const keys = Object.keys(localStorage);
     keys.forEach((key, index) => {
-        console.log(JSON.parse(localStorage[key]));
-        // arr.push(JSON.parse(localStorage[key]));
+        arr.push(JSON.parse(localStorage[key]));
     })
     tasksArray = arr.flat();
+    return tasksArray;
+}
+
+function setTasksArrayForToday(tasksArray) {
+    let today = new Date();
+    let arr = [];
+    const keys = Object.keys(localStorage);
+    keys.forEach((key, index) => {
+        arr.push(JSON.parse(localStorage[key]));
+    })
+    let finalArr = [];
+    arr.flat().map((e) => {
+        let objectDueDate = new Date(e.dueDate);
+        if (objectDueDate, objectDueDate <= today) {
+            finalArr.push(e);
+        }
+    })
+    tasksArray = finalArr;
     return tasksArray;
 }
 
@@ -229,3 +246,4 @@ export { changeTaskStatus };
 export { removeTask };
 export { verifyAndDisplayTable };
 export { setTasksArrayForCustomPages };
+export { setTasksArrayForToday };
