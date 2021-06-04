@@ -1,5 +1,7 @@
 import { createE } from './logic'
 import { deleteOldTasks } from './logic'
+import { changeTaskStatus } from './logic'
+import { removeTask } from './logic'
 
 function setTasksArray(tasksArray) {
     let arr = [];
@@ -11,7 +13,7 @@ function setTasksArray(tasksArray) {
     return tasksArray;
 }
 
-function displayTable(key) {
+function displayTable() {
     const table = createE("table");
     const trHeading = createE("tr");
     const trh1 = createE("th", "Title");
@@ -66,7 +68,7 @@ function displayTable(key) {
         table.appendChild(tr);
 
         changeTaskStatus(td6Btn);
-        removeTask(removeBtn, tr, key);
+        removeTask(removeBtn, tr);
         return table;
     });
 
@@ -75,7 +77,7 @@ function displayTable(key) {
 
 function createToday() {
     const todayPage = createE("div", "Today's todos:");
-    displayTable();
+    todayPage.appendChild(displayTable());
     return todayPage;
 }
 
