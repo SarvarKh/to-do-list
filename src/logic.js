@@ -198,10 +198,8 @@ const verifyAndDisplayTable = (projectPage, key) => {
     if (localStorage.length === 0) {
         localStorage.setItem("Default", JSON.stringify([]));
     }
-    if (JSON.parse(localStorage.getItem('Default')).length > 0) {
-
-        projectPage.appendChild(displayTable(key));
-    }
+    projectPage.appendChild(displayTable(key));
+    
 }
 
 function setTasksArrayForCustomPages(tasksArray) {
