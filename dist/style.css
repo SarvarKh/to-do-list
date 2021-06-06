@@ -54,7 +54,7 @@ button:hover {
     display: flex;
     margin-top: 4.2rem;
     margin-bottom: 2rem;
-    min-height: 100vh;
+    min-height: 85vh;
 }
 
 aside {

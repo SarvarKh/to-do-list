@@ -17,6 +17,7 @@
     },
     "ignorePatterns": [
       "dist/",
-      "build/"
+      "build/",
+      "src/"
     ]
 }
