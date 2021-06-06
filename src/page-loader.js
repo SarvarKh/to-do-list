@@ -8,7 +8,7 @@ import {
   loopThroughLocalStorageKeys,
   projectInputVerification,
   createE,
-  dropDown
+  dropDown,
 } from './logic';
 
 const createProjectsHTML = (key, projectsContainer) => {
@@ -56,14 +56,14 @@ function createProject(btn) {
 
 function createHeader() {
   const header = createE('header');
-  const headerLeft = createE("div", false, "header-left");
+  const headerLeft = createE('div', false, 'header-left');
   const headerIcon = createE('i');
   headerIcon.classList.add('fas');
   headerIcon.classList.add('fa-check-double');
   const headerTitle = createE('h1', 'Smart Todo-list');
   const navIcon = createE('i');
-  navIcon.classList.add("fas");
-  navIcon.classList.add("fa-bars");
+  navIcon.classList.add('fas');
+  navIcon.classList.add('fa-bars');
   dropDown(navIcon);
 
   headerLeft.appendChild(headerIcon);
@@ -118,7 +118,7 @@ function createAside() {
   asideBottom.appendChild(displayProjects());
 
   const projectBtn = createE('button', false, 'aside-btn');
-  projectBtn.classList.add("crete-project-container")
+  projectBtn.classList.add('crete-project-container');
   const projectTitle = createE('input');
   projectTitle.setAttribute('type', 'text');
   projectTitle.setAttribute('id', 'projectTitle');
