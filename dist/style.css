@@ -21,8 +21,19 @@ header {
 }
 
 header i {
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+
+.fa-check-double {
     margin-right: 1rem;
+}
+
+.header-left {
+    display: flex;
+}
+
+.fa-bars {
+    display: none;
 }
 
 button {
@@ -216,4 +227,62 @@ footer {
 footer a {
     padding: 0 0.5rem;
     color: #fff;
+}
+
+@media only screen 
+    and (min-device-width: 220px) 
+    and (max-device-width: 992px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+        #content {
+            width: 100%;
+        }
+
+        header {
+            font-size: 0.6rem;
+            justify-content: space-between;
+            width: 100vw;
+        }
+
+        header i {
+            font-size: 1.2rem;
+        }
+
+        .fa-check-double {
+            margin-right: 0.5rem;
+        }
+
+        .header-left {
+            display: flex;
+        }
+        
+        .fa-bars {
+            display: block;
+        }
+
+        .container {
+            margin-top: 3.4rem;
+            justify-content: center;
+        }
+
+        aside {
+            position: absolute;
+            right: 0;
+            background-color: #dbebff;
+            min-width: 60%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .fa-check-double:hover .aside {
+            display: block;
+        }
+
+        .crete-project-container {
+            display: flex;
+        }
+
+        footer {
+            font-size: 0.9rem;
+            position: absolute;
+        }
 }

@@ -55,13 +55,19 @@ function createProject(btn) {
 
 function createHeader() {
   const header = createE('header');
+  const headerLeft = createE("div", false, "header-left");
   const headerIcon = createE('i');
   headerIcon.classList.add('fas');
   headerIcon.classList.add('fa-check-double');
   const headerTitle = createE('h1', 'Smart Todo-list');
+  const navIcon = createE('i');
+  navIcon.classList.add("fas");
+  navIcon.classList.add("fa-bars");
 
-  header.appendChild(headerIcon);
-  header.appendChild(headerTitle);
+  headerLeft.appendChild(headerIcon);
+  headerLeft.appendChild(headerTitle);
+  header.appendChild(headerLeft);
+  header.appendChild(navIcon);
 
   return header;
 }
@@ -110,6 +116,7 @@ function createAside() {
   asideBottom.appendChild(displayProjects());
 
   const projectBtn = createE('button', false, 'aside-btn');
+  projectBtn.classList.add("crete-project-container")
   const projectTitle = createE('input');
   projectTitle.setAttribute('type', 'text');
   projectTitle.setAttribute('id', 'projectTitle');
