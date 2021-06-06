@@ -1,5 +1,6 @@
+// eslint-disable-next-line import/no-cycle
 import { createProjectsHTML, displayProjects } from './page-loader';
-
+// eslint-disable-next-line import/no-cycle
 import { displayTable } from './default';
 
 const createE = (elementName, content, className, href) => {

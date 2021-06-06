@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import {
   createE, deleteOldTasks, changeTaskStatus, removeTask, setTasksArrayForToday,
 } from './logic';
