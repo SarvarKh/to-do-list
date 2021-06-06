@@ -8,6 +8,7 @@ import {
   loopThroughLocalStorageKeys,
   projectInputVerification,
   createE,
+  dropDown
 } from './logic';
 
 const createProjectsHTML = (key, projectsContainer) => {
@@ -63,6 +64,7 @@ function createHeader() {
   const navIcon = createE('i');
   navIcon.classList.add("fas");
   navIcon.classList.add("fa-bars");
+  dropDown(navIcon);
 
   headerLeft.appendChild(headerIcon);
   headerLeft.appendChild(headerTitle);

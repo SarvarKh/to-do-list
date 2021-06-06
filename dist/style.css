@@ -259,18 +259,31 @@ footer a {
             display: block;
         }
 
+        .topnav.responsive .dropdown {float: none;}
+        .topnav.responsive .dropdown-content {position: relative;}
+        .topnav.responsive .dropdown .dropbtn {
+          display: block;
+          width: 100%;
+          text-align: left;
+        }
+
         .container {
             margin-top: 3.4rem;
             justify-content: center;
         }
 
         aside {
+            display: none;
             position: absolute;
             right: 0;
             background-color: #dbebff;
             min-width: 60%;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
+        }
+
+        .aside-mobile {
+            display: block;
         }
 
         .fa-check-double:hover .aside {

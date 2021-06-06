@@ -250,6 +250,13 @@ const displayHeadingIfThereIsItem = (key, table) => {
   }
 };
 
+function dropDown(navIcon) {
+  navIcon.addEventListener('click', () => {
+    const aside = document.querySelector("aside");
+    aside.classList.toggle("aside-mobile")
+  });
+}
+
 export { createE };
 export { setActiveButton };
 export { showCalledProject };
@@ -266,3 +273,4 @@ export { verifyAndDisplayTable };
 export { setTasksArrayForCustomPages };
 export { setTasksArrayForToday };
 export { displayHeadingIfThereIsItem };
+export { dropDown };
