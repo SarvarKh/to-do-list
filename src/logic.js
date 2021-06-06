@@ -35,9 +35,13 @@ const addProjectToProjects = (projectInputValue, allProjects) => {
     allProjects.projectInputValue = [];
     projectLocalStorage.map((e) => {
       allProjects.projectInputValue.push(e);
+      return allProjects;
     });
     allProjects.projectInputValue.push(projectInputValue);
-    localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify(allProjects.projectInputValue));
+    localStorage.setItem(
+      JSON.stringify(projectInputValue),
+      JSON.stringify(allProjects.projectInputValue),
+    );
   } else {
     allProjects.projectInputValue = [];
     localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify([]));
@@ -48,7 +52,7 @@ const deleteOldProjectsFromHTML = () => {
   const oldProjects = document.querySelectorAll('.project-container');
   if (oldProjects.length > 0) {
     const arrOldProjects = Array.from(oldProjects);
-    for (let index = 0; index < arrOldProjects.length; index++) {
+    for (let index = 0; index < arrOldProjects.length; index += 1) {
       const element = arrOldProjects[index];
       element.innerHTML = '';
     }
