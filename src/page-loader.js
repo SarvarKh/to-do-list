@@ -2,7 +2,12 @@ import loadInbox from './inbox';
 import loadToday from './today';
 import loadProject from './default';
 import {
-  showCalledProject, setActiveButton, deleteOldProjectsFromHTML, loopThroughLocalStorageKeys, projectInputVerification, createE,
+  showCalledProject,
+  setActiveButton,
+  deleteOldProjectsFromHTML,
+  loopThroughLocalStorageKeys,
+  projectInputVerification,
+  createE,
 } from './logic';
 
 const createProjectsHTML = (key, projectsContainer) => {

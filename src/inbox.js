@@ -20,8 +20,7 @@ function displayTable() {
   table.appendChild(trHeading);
 
   deleteOldTasks();
-  let tasksArray;
-  tasksArray = setTasksArrayForCustomPages(tasksArray);
+  const tasksArray = setTasksArrayForCustomPages();
 
   tasksArray.map((newTask) => {
     const tr = document.createElement('tr');

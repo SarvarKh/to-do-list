@@ -20,8 +20,7 @@ function displayTable() {
   table.appendChild(trHeading);
 
   deleteOldTasks();
-  let tasksArray;
-  tasksArray = setTasksArrayForToday(tasksArray);
+  const tasksArray = setTasksArrayForToday();
 
   tasksArray.map((newTask) => {
     const tr = document.createElement('tr');

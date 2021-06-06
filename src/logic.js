@@ -60,11 +60,7 @@ const deleteOldProjectsFromHTML = () => {
 };
 
 const loopThroughLocalStorageKeys = (projectsContainer) => {
-  for (const key in localStorage) {
-    if (Object.hasOwnProperty.call(localStorage, key)) {
-      createProjectsHTML(key, projectsContainer);
-    }
-  }
+  Object.keys(localStorage).map((e) => createProjectsHTML(e, projectsContainer));
 };
 
 const projects = {};
@@ -104,9 +100,7 @@ const addTaskToDefaultTasks = (newTask, tasksObj, key) => {
 
   if (defLocalStorage.length > 0) {
     tasksObj.default = [];
-    defLocalStorage.map((e) => {
-      tasksObj.default.push(e);
-    });
+    defLocalStorage.map((e) => tasksObj.default.push(e));
     tasksObj.default.push(newTask);
 
     if (key === undefined) {
@@ -141,7 +135,14 @@ const submitForm = (btn, key) => {
     if (title.value === '' || description.value === '' || dueDate.value === '' || priority.value === '' || notes.value === '') {
       alert('Fields must be filled out'); // eslint-disable-line no-alert
     } else {
-      const newTask = new Task(title.value, description.value, dueDate.value, priority.value, notes.value, checklist.status);
+      const newTask = new Task(
+        title.value,
+        description.value,
+        dueDate.value,
+        priority.value,
+        notes.value,
+        checklist.status,
+      );
       addTaskToDefaultTasks(newTask, allTasks, key);
       const defPage = document.querySelector('.project-page');
       defPage.appendChild(displayTable(key));
@@ -154,20 +155,21 @@ const deleteOldTasks = () => {
   const oldTasks = document.querySelectorAll('tr');
   if (oldTasks.length > 0) {
     const arrOldTasks = Array.from(oldTasks);
-    for (let index = 0; index < arrOldTasks.length; index++) {
+    for (let index = 0; index < arrOldTasks.length; index += 1) {
       const element = arrOldTasks[index];
       element.innerHTML = '';
     }
   }
 };
 
-function setTasksArray(tasksArray, key) {
+function setTasksArray(key) {
+  let array;
   if (key === undefined) {
-    tasksArray = JSON.parse(localStorage.getItem('Default'));
+    array = JSON.parse(localStorage.getItem('Default'));
   } else {
-    tasksArray = JSON.parse(localStorage.getItem(JSON.stringify(key)));
+    array = JSON.parse(localStorage.getItem(JSON.stringify(key)));
   }
-  return tasksArray;
+  return array;
 }
 
 const changeTaskStatus = (td6Btn) => {
@@ -200,31 +202,32 @@ const verifyAndDisplayTable = (projectPage, key) => {
   projectPage.appendChild(displayTable(key));
 };
 
-const setTasksArrayForCustomPages = (tasksArray) => {
+const setTasksArrayForCustomPages = () => {
   const arr = [];
   const keys = Object.keys(localStorage);
-  keys.forEach((key, index) => {
+  keys.forEach((key) => {
     arr.push(JSON.parse(localStorage[key]));
   });
-  tasksArray = arr.flat();
+  const tasksArray = arr.flat();
   return tasksArray;
 };
 
-const setTasksArrayForToday = (tasksArray) => {
+const setTasksArrayForToday = () => {
   const today = new Date();
   const arr = [];
   const keys = Object.keys(localStorage);
-  keys.forEach((key, index) => {
+  keys.forEach((key) => {
     arr.push(JSON.parse(localStorage[key]));
   });
   const finalArr = [];
   arr.flat().map((e) => {
     const objectDueDate = new Date(e.dueDate);
-    if (objectDueDate, objectDueDate <= today) {
+    if (objectDueDate <= today) {
       finalArr.push(e);
     }
+    return finalArr;
   });
-  tasksArray = finalArr;
+  const tasksArray = finalArr;
   return tasksArray;
 };
 

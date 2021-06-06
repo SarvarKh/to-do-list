@@ -87,8 +87,7 @@ function displayTable(key) {
   displayHeadingIfThereIsItem(key, table);
 
   deleteOldTasks();
-  let tasksArray;
-  tasksArray = setTasksArray(tasksArray, key);
+  const tasksArray = setTasksArray(key);
 
   tasksArray.map((newTask) => {
     const tr = document.createElement('tr');
