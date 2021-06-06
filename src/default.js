@@ -94,10 +94,10 @@ function displayTable(key) {
     tr.classList.add('task-row');
 
     const td1 = document.createElement('td');
-    const td2 = document.createElement('td');
+    const td2 = createE('td', false, "mobile");
     const td3 = document.createElement('td');
     const td4 = document.createElement('td');
-    const td5 = document.createElement('td');
+    const td5 = createE('td', false, "mobile");
     const td6 = document.createElement('td');
     const removeBtn = document.createElement('button');
     const td6Btn = document.createElement('button');

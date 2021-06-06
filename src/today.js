@@ -6,10 +6,10 @@ function displayTable() {
   const table = createE('table');
   const trHeading = createE('tr');
   const trh1 = createE('th', 'Title');
-  const trh2 = createE('th', 'Description');
+  const trh2 = createE('th', 'Description', 'mobile');
   const trh3 = createE('th', 'Due Date');
   const trh4 = createE('th', 'Priority');
-  const trh5 = createE('th', 'Notes');
+  const trh5 = createE('th', 'Notes', 'mobile');
   const trh6 = createE('th', 'Status');
   trHeading.appendChild(trh1);
   trHeading.appendChild(trh2);
@@ -27,10 +27,10 @@ function displayTable() {
     tr.classList.add('task-row');
 
     const td1 = document.createElement('td');
-    const td2 = document.createElement('td');
+    const td2 = createE('td', false, 'mobile');
     const td3 = document.createElement('td');
     const td4 = document.createElement('td');
-    const td5 = document.createElement('td');
+    const td5 = createE('td', false, 'mobile');
     const td6 = document.createElement('td');
     const removeBtn = document.createElement('button');
     const td6Btn = document.createElement('button');
