@@ -4,11 +4,13 @@
 
 > A personal task manager - dynamically rendered in JavaScript using the Webpack. Projects and tasks can be created and stored in Web browser's local storage.
 
-![screenshot](screenshots/desktop.png)
+![screenshot](screenshots/01.png)
 
 <div align="center">
-  <img src="screenshots/mobile01.png?raw=true" width="40%" height="auto"/>
-  <img src="screenshots/mobile02.png?raw=true" width="40%" height="auto"/>
+  <img src="screenshots/02.png?raw=true" width="80%" height="auto"/>
+  <img src="screenshots/03.png?raw=true" width="40%" height="auto"/>
+  <img src="screenshots/04.png?raw=true" width="40%" height="auto"/>
+  <img src="screenshots/mobile.png?raw=true" width="40%" height="auto"/>
 </div>
 
 > A Todo List is part of Full-Stack JavaScript Curriculum in the [the Odin Project’s](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/todo-list).
