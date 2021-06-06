@@ -60,6 +60,7 @@ button:hover {
 aside {
     background-color: #dbebff;
     padding: 1.5rem;
+    width: 30%;
 }
 
 .aside-top {
@@ -159,7 +160,6 @@ main {
     border: 1px solid #dbebff;
     padding: 2rem 3rem;
     border-radius: 0.5rem;
-    width: 25vw;
 }
 
 .form > input, select {

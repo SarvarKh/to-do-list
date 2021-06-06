@@ -21,11 +21,8 @@
 
 ## Live Demo
 
-[Live Demo Link](https://hilton-tashkent-city-restaurant.netlify.app/)
+[Live Demo Link](https://smart-to-do-list.netlify.app/)
 
-## Website demo on YouTube 
-
-[YouTube Demo Link](https://youtu.be/bu1iZP0u8zk)
 
 ## Getting Started
 
