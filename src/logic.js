@@ -129,9 +129,9 @@ const submitForm = (btn, key) => {
     const checklist = document.querySelector('#checklist');
 
     if (checklist.checked) {
-      checklist.status = 'Closed';
+      checklist.status = 'Complete';
     } else {
-      checklist.status = 'Open';
+      checklist.status = 'Incomplete';
     }
     if (title.value === '' || description.value === '' || dueDate.value === '' || priority.value === '' || notes.value === '') {
       alert('Fields must be filled out'); // eslint-disable-line no-alert
@@ -175,10 +175,10 @@ function setTasksArray(key) {
 
 const changeTaskStatus = (td6Btn) => {
   td6Btn.addEventListener('click', () => {
-    if (td6Btn.textContent === 'Closed') {
-      td6Btn.textContent = 'Open';
+    if (td6Btn.textContent === 'Complete') {
+      td6Btn.textContent = 'Incomplete';
     } else {
-      td6Btn.textContent = 'Closed';
+      td6Btn.textContent = 'Complete';
     }
   });
 };
