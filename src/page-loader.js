@@ -5,6 +5,8 @@ import loadToday from './today';
 // eslint-disable-next-line import/no-cycle
 import loadProject from './default';
 // eslint-disable-next-line import/no-cycle
+import createProjectModal from './modal';
+// eslint-disable-next-line import/no-cycle
 import {
   showCalledProject,
   setActiveButton,
@@ -27,8 +29,14 @@ const createProjectsHTML = (key, projectsContainer) => {
   newProject.classList.add('aside-btn');
   showCalledProject(newProject, loadProject, key.replace(/['"]+/g, ''));
 
+  const modal = document.querySelector(".modal");
   const projectEdit = createE("i", false, 'fas');
   projectEdit.classList.add("fa-edit");
+  projectEdit.classList.add("project-edit-icon");
+  projectEdit.addEventListener('click', () => {
+    modal.style.display = "block";
+  })
+
   const newProjectDeleteBtn = createE('i');
   newProjectDeleteBtn.classList.add('fas');
   newProjectDeleteBtn.classList.add('fa-trash-alt');
@@ -185,6 +193,7 @@ function createFooter() {
 function start() {
   const content = document.getElementById('content');
   content.appendChild(createHeader());
+  content.appendChild(createProjectModal());
   const container = createE('div', false, 'container');
   container.appendChild(createAside());
   container.appendChild(createMain());
