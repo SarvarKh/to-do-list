@@ -27,6 +27,8 @@ const createProjectsHTML = (key, projectsContainer) => {
   newProject.classList.add('aside-btn');
   showCalledProject(newProject, loadProject, key.replace(/['"]+/g, ''));
 
+  const projectEdit = createE("i", false, 'fas');
+  projectEdit.classList.add("fa-edit");
   const newProjectDeleteBtn = createE('i');
   newProjectDeleteBtn.classList.add('fas');
   newProjectDeleteBtn.classList.add('fa-trash-alt');
@@ -37,6 +39,7 @@ const createProjectsHTML = (key, projectsContainer) => {
 
   projectPart1.appendChild(newProjectIcon);
   projectPart1.appendChild(newProject);
+  projectPart2.appendChild(projectEdit);
   projectPart2.appendChild(newProjectDeleteBtn);
   newProjectCon.appendChild(projectPart1);
   newProjectCon.appendChild(projectPart2);

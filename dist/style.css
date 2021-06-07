@@ -65,7 +65,7 @@ button:hover {
 aside {
     background-color: #dbebff;
     padding: 1.5rem;
-    width: 30%;
+    width: 16rem;
 }
 
 .aside-top {
@@ -145,11 +145,11 @@ div[data-projectname="Default"] {
 }
 
 .fa-trash-alt {
-    display: none;
+    visibility: hidden;
 }
 
 .project-container:hover .fa-trash-alt {
-    display: inline-block;
+    visibility: visible;
 }
 
 main {
@@ -292,7 +292,7 @@ footer a {
             position: fixed;
             right: 0;
             background-color: #dbebff;
-            min-width: 15rem;
+            width: 15rem;
             box-shadow: -8px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
