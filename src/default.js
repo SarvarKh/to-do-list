@@ -100,7 +100,9 @@ function displayTable(key) {
     const td4 = document.createElement('td');
     const td5 = createE('td', false, 'mobile');
     const td6 = document.createElement('td');
-    const removeBtn = document.createElement('button');
+    const removeBtn = document.createElement('i');
+    removeBtn.classList.add("fas");
+    removeBtn.classList.add("fa-trash");
     const td6Btn = document.createElement('button');
 
     td1.textContent = newTask.title;
@@ -109,7 +111,6 @@ function displayTable(key) {
     td4.textContent = newTask.priority;
     td5.textContent = newTask.notes;
     td6Btn.textContent = newTask.checklist;
-    removeBtn.textContent = 'Remove';
     tr.setAttribute('data-index', tasksArray.indexOf(newTask));
 
     tr.appendChild(td1);
