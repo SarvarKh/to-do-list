@@ -93,6 +93,14 @@ button:hover {
   cursor: pointer;
 }
 
+.edit-save-btn {
+    padding: 0.2rem 1rem;
+    margin: 0 0.5rem;
+    background-color: #dbebff;
+    font-weight: 500;
+    border-radius: 0.1rem;
+}
+
 /* Container */
 .container {
     display: flex;
