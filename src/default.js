@@ -100,6 +100,8 @@ function displayTable(key) {
     const td4 = document.createElement('td');
     const td5 = createE('td', false, 'mobile');
     const td6 = document.createElement('td');
+    const edit = createE("i", false, "fas");
+    edit.classList.add("fa-edit");
     const removeBtn = document.createElement('i');
     removeBtn.classList.add("fas");
     removeBtn.classList.add("fa-trash");
@@ -120,6 +122,7 @@ function displayTable(key) {
     tr.appendChild(td5);
     tr.appendChild(td6);
     td6.appendChild(td6Btn);
+    td6.appendChild(edit);
     td6.appendChild(removeBtn);
     table.appendChild(tr);
 

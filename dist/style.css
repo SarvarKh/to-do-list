@@ -5,6 +5,11 @@
     font-family: 'Poppins', sans-serif;
 }
 
+#main i:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
 /* Header */
 header {
     display: flex;
@@ -210,6 +215,10 @@ table button {
     padding: 0.3rem 0.5rem;
     border-radius: 0.2rem;
     margin: 0 0.25rem;
+}
+
+.fa-edit {
+    padding: 0 0.5rem;
 }
 
 .fa-trash {
