@@ -1,5 +1,49 @@
 import { createE } from './logic';
 
+function editTask(btn) {
+    btn.addEventListener('click', () => {
+      const taskTitle = document.querySelector('#titleAfterTaskEdit');
+      const taskDescription = document.querySelector('#descriptionAfterTaskEdit');
+      const taskDueDate = document.querySelector('#dueDateAfterTaskEdit');
+      const taskPriority = document.querySelector('#priorityAfterTaskEdit');
+      const taskNotes = document.querySelector('#notesAfterTaskEdit');
+      const taskStatus = document.querySelector('#checklistAfterTaskEdit');
+      
+      projectInputVerification(taskTitle, taskDescription, taskDueDate, taskPriority, taskNotes, taskStatus);
+    });
+    return btn;
+}
+
+const tasks = {};
+
+const projectInputVerification = (taskTitle, taskDescription, taskDueDate, taskPriority, taskNotes, taskStatus) => {
+    if (taskTitle.value === '' || taskDescription.value === '' || taskDueDate.value === '' || taskPriority.value === '' || taskNotes.value === '' || taskTitle.value === '' || taskStatus.value === '') {
+        alert("At least one field must be filled out"); // eslint-disable-line no-alert
+    } else {
+        const newTask = new Task(
+            taskTitle.value,
+            taskDescription.value,
+            taskDueDate.value,
+            taskPriority.value,
+            taskNotes.value,
+            taskStatus.status,
+        );
+        // editTaskFromTasks(newTask, tasks);
+    }
+};
+
+const editTaskFromTasks = (taskInputValue, allTasks) => {
+    const key = document.querySelector('.active-edit-task');
+
+    allTasks[key.textContent] = allTasks[taskInputValue];
+    delete allTasks[taskInputValue];
+
+    const projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key.textContent)));
+    localStorage.setItem(JSON.stringify(taskInputValue), JSON.stringify(projectLocalStorage));
+    localStorage.removeItem(JSON.stringify(key.textContent));
+    location.reload();
+};
+
 function displayTaskForm(key) {
     const form = createE('div', false, 'form');
     const input1 = createE('input');
@@ -7,7 +51,6 @@ function displayTaskForm(key) {
     input1.setAttribute('id', 'titleAfterTaskEdit');
     input1.setAttribute('name', 'title');
     input1.setAttribute('placeholder', 'add title');
-    input1.setAttribute('autofocus', true);
   
     const input2 = createE('input');
     input2.setAttribute('type', 'text');
@@ -51,7 +94,7 @@ function displayTaskForm(key) {
     input6Label.setAttribute('for', 'checklist');
   
     const addTaskbtn = createE('button');
-    // editProject(addTaskbtn, key);
+    editTask(addTaskbtn);
     const addTaskBtnIcon = createE('i');
     addTaskBtnIcon.classList.add('fas');
     addTaskBtnIcon.classList.add('fa-check-square');
