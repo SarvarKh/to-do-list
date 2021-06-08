@@ -208,7 +208,7 @@ function start() {
   container.appendChild(createMain());
   content.appendChild(container);
   content.appendChild(createFooter());
-  setActiveButton(document.querySelector('.aside-btn'));
+  setActiveButton(document.querySelector('#defaulBtn'));
   loadProject();
 }
 
