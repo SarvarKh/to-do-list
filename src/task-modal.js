@@ -4,25 +4,25 @@ function displayTaskForm(key) {
     const form = createE('div', false, 'form');
     const input1 = createE('input');
     input1.setAttribute('type', 'text');
-    input1.setAttribute('id', 'title');
+    input1.setAttribute('id', 'titleAfterTaskEdit');
     input1.setAttribute('name', 'title');
     input1.setAttribute('placeholder', 'add title');
     input1.setAttribute('autofocus', true);
   
     const input2 = createE('input');
     input2.setAttribute('type', 'text');
-    input2.setAttribute('id', 'description');
+    input2.setAttribute('id', 'descriptionAfterTaskEdit');
     input2.setAttribute('name', 'description');
     input2.setAttribute('placeholder', 'add description');
   
     const input3 = createE('input');
     input3.setAttribute('type', 'date');
-    input3.setAttribute('id', 'dueDate');
+    input3.setAttribute('id', 'dueDateAfterTaskEdit');
     input3.setAttribute('name', 'dueDate');
     input3.setAttribute('placeholder', 'add due date');
   
     const input4 = createE('select');
-    input4.setAttribute('id', 'priority');
+    input4.setAttribute('id', 'priorityAfterTaskEdit');
     const input4Label = createE('label', 'Choose a priority:');
     input4Label.setAttribute('for', 'priority');
     const option1 = createE('option', 'High');
@@ -37,14 +37,14 @@ function displayTaskForm(key) {
   
     const input5 = createE('input');
     input5.setAttribute('type', 'text');
-    input5.setAttribute('id', 'notes');
+    input5.setAttribute('id', 'notesAfterTaskEdit');
     input5.setAttribute('name', 'notes');
     input5.setAttribute('placeholder', 'any notes?');
   
     const input6Container = createE('div', false, 'checkbox-container');
     const input6 = createE('input');
     input6.setAttribute('type', 'checkbox');
-    input6.setAttribute('id', 'checklist');
+    input6.setAttribute('id', 'checklistAfterTaskEdit');
     input6.setAttribute('name', 'checklist');
   
     const input6Label = createE('label', 'Completeness Status');
