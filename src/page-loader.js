@@ -7,6 +7,8 @@ import loadProject from './default';
 // eslint-disable-next-line import/no-cycle
 import createProjectModal from './modal';
 // eslint-disable-next-line import/no-cycle
+import createTaskModal from './task-modal';
+// eslint-disable-next-line import/no-cycle
 import {
   showCalledProject,
   setActiveButton,
@@ -200,6 +202,7 @@ function start() {
   const content = document.getElementById('content');
   content.appendChild(createHeader());
   content.appendChild(createProjectModal());
+  content.appendChild(createTaskModal());
   const container = createE('div', false, 'container');
   container.appendChild(createAside());
   container.appendChild(createMain());

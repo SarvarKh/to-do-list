@@ -16,8 +16,6 @@ const projectInputVerification = (projectTitle) => {
     } else {
       const newProject = projectTitle.value;
       editProjectFromProjects(newProject, projects);
-    //   const asideBottom = document.querySelector('.aside-bottom');
-    //   asideBottom.appendChild(displayProjects());
     }
 };
 

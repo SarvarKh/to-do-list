@@ -100,8 +100,20 @@ function displayTable(key) {
     const td4 = document.createElement('td');
     const td5 = createE('td', false, 'mobile');
     const td6 = document.createElement('td');
+
+    const modal = document.querySelector(".modal-task");
     const edit = createE("i", false, "fas");
     edit.classList.add("fa-edit");
+    edit.classList.add("task-edit-icon");
+    edit.addEventListener('click', () => {
+      const buttons = document.querySelectorAll('.task-row');
+      buttons.forEach((btn) => {
+        btn.classList.remove('active-edit-task');
+      });
+      tr.classList.add('active-edit-task');
+      modal.style.display = "block";
+    });
+
     const removeBtn = document.createElement('i');
     removeBtn.classList.add("fas");
     removeBtn.classList.add("fa-trash");
