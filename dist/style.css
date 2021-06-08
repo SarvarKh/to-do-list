@@ -91,6 +91,10 @@ button:hover {
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.modal-content-task {
+    max-width: 30rem;
+}
+
 /* The Close Button */
 .close {
   color: #aaa;
@@ -241,6 +245,10 @@ main {
 }
 
 .fa-plus-circle {
+    margin-right: 0.5rem;
+}
+
+.fa-check-square {
     margin-right: 0.5rem;
 }
 

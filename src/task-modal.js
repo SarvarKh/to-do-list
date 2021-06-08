@@ -54,7 +54,7 @@ function displayTaskForm(key) {
     // editProject(addTaskbtn, key);
     const addTaskBtnIcon = createE('i');
     addTaskBtnIcon.classList.add('fas');
-    addTaskBtnIcon.classList.add('fa-plus-circle');
+    addTaskBtnIcon.classList.add('fa-check-square');
     const addTaskbtnSpan = createE('span', 'Save the edit');
     addTaskbtn.appendChild(addTaskBtnIcon);
     addTaskbtn.appendChild(addTaskbtnSpan);
@@ -76,6 +76,7 @@ function displayTaskForm(key) {
 const createTaskModal = () => {
     const modal = createE("div", false, "modal-task");
     const modalContent = createE('div', false, 'modal-content');
+    modalContent.classList.add('modal-content-task')
     const close = createE('span', '&times;', "close");
     modalContent.appendChild(close);
 
