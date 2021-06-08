@@ -1,7 +1,4 @@
-import { 
-    createE,
-    projectTitleAfterEdit
-} from './logic';
+import { createE } from './logic';
 
 function editProject(btn) {
     btn.addEventListener('click', () => {
@@ -18,30 +15,21 @@ const projectInputVerification = (projectTitle) => {
       alert("Project Title's Field must be filled out"); // eslint-disable-line no-alert
     } else {
       const newProject = projectTitle.value;
-      editProjectToProjects(newProject, projects);
+      editProjectFromProjects(newProject, projects);
     //   const asideBottom = document.querySelector('.aside-bottom');
     //   asideBottom.appendChild(displayProjects());
     }
 };
 
-const editProjectToProjects = (projectInputValue, allProjects) => {
-    allProjects[projectInputValue] = [];
-    const projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(projectInputValue)));
-    if (projectLocalStorage !== null) {
-      allProjects.projectInputValue = [];
-      projectLocalStorage.map((e) => {
-        allProjects.projectInputValue.push(e);
-        return allProjects;
-      });
-      allProjects.projectInputValue.push(projectInputValue);
-      localStorage.setItem(
-        JSON.stringify(projectInputValue),
-        JSON.stringify(allProjects.projectInputValue),
-      );
-    } else {
-      allProjects.projectInputValue = [];
-      localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify([]));
-    }
+const editProjectFromProjects = (projectInputValue, allProjects) => {
+    const key = document.querySelector('.active-edit-project');
+
+    allProjects[key.textContent] = allProjects[projectInputValue];
+    delete allProjects[projectInputValue];
+
+    const projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key.textContent)));
+    localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify(projectLocalStorage));
+    localStorage.removeItem(JSON.stringify(key.textContent));
 };
 
 const createProjectModal = () => {

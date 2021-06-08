@@ -277,6 +277,10 @@ tr:hover .fa-trash {
     visibility: visible;
 }
 
+.projectTitleAfterEdit {
+    width: 15rem;
+}
+
 /* Footer */
 footer {
     padding: 1rem;

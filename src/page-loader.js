@@ -34,6 +34,12 @@ const createProjectsHTML = (key, projectsContainer) => {
   projectEdit.classList.add("fa-edit");
   projectEdit.classList.add("project-edit-icon");
   projectEdit.addEventListener('click', () => {
+    
+    const buttons = document.querySelectorAll('.project-name');
+    buttons.forEach((btn) => {
+      btn.classList.remove('active-edit-project');
+    });
+    newProject.classList.add('active-edit-project');
     modal.style.display = "block";
   })
 
