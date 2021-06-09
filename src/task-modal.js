@@ -10,7 +10,7 @@ const editTaskFromTasks = (taskInputValue, allTasks) => {
   const projectKey = projectKeyElement.textContent;
 
   allTasks[projectKey] = JSON.parse(localStorage.getItem(JSON.stringify(projectKey)));
-  allTasks[projectKey][parseInt(taskKeyIndex)] = taskInputValue;
+  allTasks[projectKey][parseInt(taskKeyIndex, 10)] = taskInputValue;
   localStorage.setItem(JSON.stringify(projectKey), JSON.stringify(allTasks[projectKey]));
   window.location.reload();
 };
