@@ -31,19 +31,18 @@ const createProjectsHTML = (key, projectsContainer) => {
   newProject.classList.add('aside-btn');
   showCalledProject(newProject, loadProject, key.replace(/['"]+/g, ''));
 
-  const modal = document.querySelector(".modal");
-  const projectEdit = createE("i", false, 'fas');
-  projectEdit.classList.add("fa-edit");
-  projectEdit.classList.add("project-edit-icon");
+  const modal = document.querySelector('.modal');
+  const projectEdit = createE('i', false, 'fas');
+  projectEdit.classList.add('fa-edit');
+  projectEdit.classList.add('project-edit-icon');
   projectEdit.addEventListener('click', () => {
-    
     const buttons = document.querySelectorAll('.project-name');
     buttons.forEach((btn) => {
       btn.classList.remove('active-edit-project');
     });
     newProject.classList.add('active-edit-project');
-    modal.style.display = "block";
-  })
+    modal.style.display = 'block';
+  });
 
   const newProjectDeleteBtn = createE('i');
   newProjectDeleteBtn.classList.add('fas');
