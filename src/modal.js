@@ -10,7 +10,7 @@ const editProjectFromProjects = (projectInputValue, allProjects) => {
   const projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key.textContent)));
   localStorage.setItem(JSON.stringify(projectInputValue), JSON.stringify(projectLocalStorage));
   localStorage.removeItem(JSON.stringify(key.textContent));
-  location.reload();
+  window.location.reload();
 };
 
 const projects = {};

@@ -12,7 +12,7 @@ const editTaskFromTasks = (taskInputValue, allTasks) => {
   allTasks[projectKey] = JSON.parse(localStorage.getItem(JSON.stringify(projectKey)));
   allTasks[projectKey][parseInt(taskKeyIndex)] = taskInputValue;
   localStorage.setItem(JSON.stringify(projectKey), JSON.stringify(allTasks[projectKey]));
-  location.reload();
+  window.location.reload();
 };
 
 const projectInputVerification = (
