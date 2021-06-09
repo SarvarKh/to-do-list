@@ -2,45 +2,61 @@ import { createE } from './logic';
 
 function editTask(btn) {
     btn.addEventListener('click', () => {
-      const taskTitle = document.querySelector('#titleAfterTaskEdit');
-      const taskDescription = document.querySelector('#descriptionAfterTaskEdit');
-      const taskDueDate = document.querySelector('#dueDateAfterTaskEdit');
-      const taskPriority = document.querySelector('#priorityAfterTaskEdit');
-      const taskNotes = document.querySelector('#notesAfterTaskEdit');
-      const taskStatus = document.querySelector('#checklistAfterTaskEdit');
+        const taskTitle = document.querySelector('#titleAfterTaskEdit');
+        const taskDescription = document.querySelector('#descriptionAfterTaskEdit');
+        const taskDueDate = document.querySelector('#dueDateAfterTaskEdit');
+        const taskPriority = document.querySelector('#priorityAfterTaskEdit');
+        const taskNotes = document.querySelector('#notesAfterTaskEdit');
+        const taskStatus = document.querySelector('#checklistAfterTaskEdit');
       
-      projectInputVerification(taskTitle, taskDescription, taskDueDate, taskPriority, taskNotes, taskStatus);
+        if (taskStatus.checked) {
+            taskStatus.status = 'Complete';
+        } else {
+            taskStatus.status = 'Incomplete';
+        }
+
+        projectInputVerification(taskTitle, taskDescription, taskDueDate, taskPriority, taskNotes, taskStatus);
     });
     return btn;
 }
 
+
+function Task(title, description, dueDate, priority, notes, checklist) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.notes = notes;
+    this.checklist = checklist;
+}
+  
 const tasks = {};
 
 const projectInputVerification = (taskTitle, taskDescription, taskDueDate, taskPriority, taskNotes, taskStatus) => {
-    if (taskTitle.value === '' || taskDescription.value === '' || taskDueDate.value === '' || taskPriority.value === '' || taskNotes.value === '' || taskTitle.value === '' || taskStatus.value === '') {
+    if (taskTitle.value === '' || taskDescription.value === '' || taskDueDate.value === '' || taskPriority.value === '' || taskNotes.value === '' || taskStatus.value === '') {
         alert("At least one field must be filled out"); // eslint-disable-line no-alert
     } else {
-        const newTask = new Task(
-            taskTitle.value,
-            taskDescription.value,
-            taskDueDate.value,
-            taskPriority.value,
-            taskNotes.value,
-            taskStatus.status,
-        );
-        // editTaskFromTasks(newTask, tasks);
+        const newTask = {
+            title: taskTitle.value,
+            description: taskDescription.value,
+            dueDate: taskDueDate.value,
+            priority: taskPriority.value,
+            notes: taskNotes.value,
+            checklist: taskStatus.status,
+    };
+        editTaskFromTasks(newTask, tasks);
     }
 };
 
 const editTaskFromTasks = (taskInputValue, allTasks) => {
-    const key = document.querySelector('.active-edit-task');
+    const taskKeyElement = document.querySelector('.active-edit-task');
+    const taskKeyIndex = taskKeyElement.dataset.index;
+    const projectKeyElement = document.querySelector('.active').lastChild;
+    const projectKey = projectKeyElement.textContent;
 
-    allTasks[key.textContent] = allTasks[taskInputValue];
-    delete allTasks[taskInputValue];
-
-    const projectLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key.textContent)));
-    localStorage.setItem(JSON.stringify(taskInputValue), JSON.stringify(projectLocalStorage));
-    localStorage.removeItem(JSON.stringify(key.textContent));
+    allTasks[projectKey] = JSON.parse(localStorage.getItem(JSON.stringify(projectKey)));
+    allTasks[projectKey][parseInt(taskKeyIndex)] = taskInputValue;
+    localStorage.setItem(JSON.stringify(projectKey), JSON.stringify(allTasks[projectKey]));
     location.reload();
 };
 
