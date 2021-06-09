@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import {
-  deleteOldTasks, setTasksArrayForCustomPages, changeTaskStatus, removeTask, createE,
+  deleteOldTasks, setTasksArrayForCustomPages, createE,
 } from './logic';
 
 function displayTable() {
