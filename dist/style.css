@@ -229,6 +229,7 @@ main {
     border: 1px solid #dbebff;
     padding: 2rem 3rem;
     border-radius: 0.5rem;
+    max-width: 20rem;
 }
 
 .form > input, select {
@@ -371,6 +372,7 @@ footer a {
 
         .aside-mobile {
             display: block;
+            background-color: #dbebfff3;
         }
 
         .fa-check-double:hover .aside {
@@ -401,6 +403,14 @@ footer a {
             font-size: 0.6rem;
             margin: 0.1rem;
 
+        }
+        
+        .fa-trash-alt {
+            visibility: visible;
+        }
+
+        .fa-trash {
+            visibility: visible;
         }
         
         footer {

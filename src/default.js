@@ -4,7 +4,6 @@ import {
   submitForm,
   deleteOldTasks,
   setTasksArray,
-  changeTaskStatus,
   removeTask,
   verifyAndDisplayTable,
   displayHeadingIfThereIsItem,
@@ -117,7 +116,7 @@ function displayTable(key) {
     const removeBtn = document.createElement('i');
     removeBtn.classList.add('fas');
     removeBtn.classList.add('fa-trash');
-    const td6Btn = document.createElement('button');
+    const td6Btn = document.createElement('span');
 
     td1.textContent = newTask.title;
     td2.textContent = newTask.description;
@@ -138,7 +137,6 @@ function displayTable(key) {
     td6.appendChild(removeBtn);
     table.appendChild(tr);
 
-    changeTaskStatus(td6Btn);
     removeTask(removeBtn, tr, key);
     return table;
   });

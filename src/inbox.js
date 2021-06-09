@@ -33,8 +33,7 @@ function displayTable() {
     const td4 = document.createElement('td');
     const td5 = createE('td', false, 'mobile');
     const td6 = document.createElement('td');
-    const removeBtn = document.createElement('button');
-    const td6Btn = document.createElement('button');
+    const td6Btn = document.createElement('div');
 
     td1.textContent = newTask.title;
     td2.textContent = newTask.description;
@@ -42,7 +41,6 @@ function displayTable() {
     td4.textContent = newTask.priority;
     td5.textContent = newTask.notes;
     td6Btn.textContent = newTask.checklist;
-    removeBtn.textContent = 'Remove';
     tr.setAttribute('data-index', tasksArray.indexOf(newTask));
 
     tr.appendChild(td1);
@@ -52,11 +50,8 @@ function displayTable() {
     tr.appendChild(td5);
     tr.appendChild(td6);
     td6.appendChild(td6Btn);
-    td6.appendChild(removeBtn);
     table.appendChild(tr);
 
-    changeTaskStatus(td6Btn);
-    removeTask(removeBtn, tr);
     return table;
   });
 

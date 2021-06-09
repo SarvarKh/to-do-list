@@ -173,16 +173,6 @@ function setTasksArray(key) {
   return array;
 }
 
-const changeTaskStatus = (td6Btn) => {
-  td6Btn.addEventListener('click', () => {
-    if (td6Btn.textContent === 'Complete') {
-      td6Btn.textContent = 'Incomplete';
-    } else {
-      td6Btn.textContent = 'Complete';
-    }
-  });
-};
-
 const removeTask = (removeBtn, tr, key) => {
   removeBtn.addEventListener('click', () => {
     tr.remove();
@@ -268,7 +258,6 @@ export { addTaskToDefaultTasks };
 export { submitForm };
 export { deleteOldTasks };
 export { setTasksArray };
-export { changeTaskStatus };
 export { removeTask };
 export { verifyAndDisplayTable };
 export { setTasksArrayForCustomPages };
