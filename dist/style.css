@@ -1,0 +1,421 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+#main i:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    z-index: 1;
+    background-color: #4998ff;
+    color: #fff;
+}
+
+header i {
+    font-size: 1.5rem;
+}
+
+.fa-check-double {
+    margin-right: 1rem;
+}
+
+.header-left {
+    display: flex;
+}
+
+.fa-bars {
+    display: none;
+}
+
+button {
+    border-style: none;
+    border-radius: 0.1rem;
+    background: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* Modals */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-task {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal-content-task {
+    max-width: 30rem;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-save-btn {
+    padding: 0.2rem 1rem;
+    margin: 0 0.5rem;
+    background-color: #dbebff;
+    font-weight: 500;
+    border-radius: 0.1rem;
+}
+
+/* Container */
+.container {
+    display: flex;
+    margin-top: 4.2rem;
+    margin-bottom: 2rem;
+    min-height: 85vh;
+}
+
+aside {
+    background-color: #dbebff;
+    padding: 1.5rem;
+    width: 16rem;
+}
+
+.aside-top {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding-left: 0.5rem;
+}
+
+.aside-btn {
+    margin-bottom: 0.5rem;
+    max-width: max-content;
+}
+
+.aside-btn i {
+    margin-right: 0.3rem;
+}
+
+.aside-bottom {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+aside input {
+    padding: 0.5rem;
+}
+
+.fa-plus-square {
+    padding: 0.5rem 0.3rem 0.5rem 0;
+}
+
+#defaulBtn {
+    padding-left: 1rem;
+    margin-top: 0.3rem;
+}
+
+.project-container {
+    padding-left: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    transition: padding 0.5s;
+}
+
+.project-container:hover {
+    opacity: 0.7;
+    border: 1px solid #4998ff;
+    border-left: none;
+    border-right: none;
+    padding: 0.3rem 0.3rem 0.3rem 1rem;
+}
+
+.project-container i {
+    margin-right: 0.3rem;
+}
+
+.project-left {
+    margin: 0.25rem 0 0.25rem 0;
+}
+
+.active {
+    opacity: 0.7;
+    border: 1px solid #4998ff;
+    border-left: none;
+    border-right: none;
+    padding: 0.1rem 0.1rem 0.1rem 0.5rem;
+    transition: padding 0.5s;
+}
+
+.active:hover {
+    padding: 0;
+}
+
+div[data-projectname="Default"] {
+    display: none;
+}
+
+.fa-trash-alt {
+    visibility: hidden;
+}
+
+.project-container:hover .fa-trash-alt {
+    visibility: visible;
+}
+
+main {
+    padding: 1.5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+    color: black;
+    font-size: 0.8rem;
+    border: 1px solid #dbebff;
+    padding: 2rem 3rem;
+    border-radius: 0.5rem;
+    max-width: 20rem;
+}
+
+.form > input, select {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.form button {
+    margin-top: 1.5rem;
+}
+
+.checkbox-container input {
+    margin-right: 0.5rem;
+}
+
+.fa-plus-circle {
+    margin-right: 0.5rem;
+}
+
+.fa-check-square {
+    margin-right: 0.5rem;
+}
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60vw;
+    font-size: 0.8rem;
+  }
+  
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  table tr:nth-child(even) { background-color: #f2f2f2; }
+  
+  table tr:hover { background-color: #ddd; }
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4998ff;
+    color: white;
+}
+
+table button {
+    background-color: #fff;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.2rem;
+    margin: 0 0.25rem;
+}
+
+.fa-edit {
+    padding: 0 0.5rem;
+}
+
+.fa-trash {
+    padding: 0 0.5rem;
+    visibility: hidden;
+}
+
+tr:hover .fa-trash {
+    visibility: visible;
+}
+
+.projectTitleAfterEdit {
+    width: 15rem;
+}
+
+/* Footer */
+footer {
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #4998ff;
+    color: #fff;
+}
+
+footer a {
+    padding: 0 0.5rem;
+    color: #fff;
+}
+
+@media only screen 
+    and (min-device-width: 220px) 
+    and (max-device-width: 992px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+        .mobile {
+            display: none;
+        }
+
+        #content {
+            max-width: 100%;
+        }
+
+        header {
+            font-size: 0.6rem;
+            justify-content: space-between;
+            width: 100vw;
+        }
+
+        header i {
+            font-size: 1.2rem;
+        }
+
+        .fa-check-double {
+            margin-right: 0.5rem;
+        }
+
+        .header-left {
+            display: flex;
+        }
+        
+        .fa-bars {
+            display: block;
+        }
+
+        .container {
+            margin-top: 3.4rem;
+            justify-content: center;
+            margin-bottom: 2.4rem;
+        }
+
+        aside {
+            display: none;
+            position: fixed;
+            right: 0;
+            background-color: #dbebff;
+            width: 15rem;
+            box-shadow: -8px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .aside-mobile {
+            display: block;
+            background-color: #dbebfff3;
+        }
+
+        .fa-check-double:hover .aside {
+            display: block;
+        }
+
+        .crete-project-container {
+            display: flex;
+        }
+
+        #main {
+            padding: 0;
+        }
+
+        .form {
+            width: 70vw;
+            padding: 1.5rem;
+            margin: 1rem auto;
+        }
+
+        table {
+            font-size: 0.7rem;
+            width: 90vw;
+            margin: 2rem auto;
+        }
+
+        table button {
+            font-size: 0.6rem;
+            margin: 0.1rem;
+
+        }
+        
+        .fa-trash-alt {
+            visibility: visible;
+        }
+
+        .fa-trash {
+            visibility: visible;
+        }
+
+        footer {
+            font-size: 0.8rem;
+            position: fixed;
+            bottom: 0;
+        }
+}
