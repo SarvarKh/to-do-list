@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "watch": "jest --watch ./src/logic.test.js",
     "build": "webpack"
   },
   "repository": {

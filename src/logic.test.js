@@ -1,5 +1,5 @@
-const createE = require("./logic");
+const sum = require('./logic');
 
-test('Create html element', () => {
-    // test some stuff
-})
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
