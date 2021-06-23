@@ -2,18 +2,20 @@
  * @jest-environment jsdom
  */
 import { before } from 'lodash';
-import {createE, deleteOldProjectsFromHTML, Task} from './logic'
+import {createE, deleteOldProjectsFromHTML, projectInputVerification, Task} from './logic'
 
-test('Creates a p element', () => {
-    const newElement = document.createElement('p');
-    expect(createE('p')).toStrictEqual(newElement);
-})
-
-test('Creates a div element with its attributes like: textContent, ClassName', () => {
-    const newElement = document.createElement('div');
-    newElement.textContent = "this is the div element content";
-    newElement.classList.add('div-class')
-    expect(createE('div', "this is the div element content", "div-class")).toStrictEqual(newElement);
+describe("HTML elements creation with muptiple properties", () => {
+    test('Creates a p element', () => {
+        const newElement = document.createElement('p');
+        expect(createE('p')).toStrictEqual(newElement);
+    })
+    
+    test('Creates a div element with its attributes like: textContent, ClassName', () => {
+        const newElement = document.createElement('div');
+        newElement.textContent = "this is the div element content";
+        newElement.classList.add('div-class')
+        expect(createE('div', "this is the div element content", "div-class")).toStrictEqual(newElement);
+    })
 })
 
 describe("Remove old projects from HTML content", () => {
@@ -27,6 +29,11 @@ describe("Remove old projects from HTML content", () => {
 })
 
 describe("Task creation", () => {
+    test("Add empty input and through the alert error", () => {
+        window.alert = jest.fn();
+        expect(projectInputVerification(createE('input', ""))).toBe("Project Title's Field must be filled out")
+    })
+
     test("Create Task object", () => {
         expect(new Task('testing_title', 'testing_description', 'testing_dueDate', 'testing_priority', 'testing_notes', 'testing_checklist')).toEqual({title: 'testing_title', description: 'testing_description', dueDate: 'testing_dueDate', priority: 'testing_priority', notes: 'testing_notes', checklist: 'testing_checklist'})
     })
