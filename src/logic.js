@@ -265,4 +265,4 @@ export { setTasksArrayForCustomPages };
 export { setTasksArrayForToday };
 export { displayHeadingIfThereIsItem };
 export { dropDown };
-export { addProjectToProjects };
+export { addProjectToProjects, Task };
