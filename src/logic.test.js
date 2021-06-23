@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { before } from 'lodash';
-import {createE, deleteOldProjectsFromHTML, projectInputVerification, Task} from './logic'
+import {createE, deleteOldProjectsFromHTML, projectInputVerification, addProjectToProjects, Task, addTaskToDefaultTasks} from './logic'
 
 describe("HTML elements creation with muptiple properties", () => {
     test('Creates a p element', () => {
@@ -27,6 +27,21 @@ describe("Remove old projects from HTML content", () => {
         expect(deleteOldProjectsFromHTML()).toStrictEqual(createE('div', false, 'project-container'));
     })
 })
+
+describe("Project creation", () => {
+    test("Create a project from user input", () => {
+        const allProjects = {};
+        addProjectToProjects('Jest Project', allProjects);
+        expect(JSON.parse(localStorage.getItem(JSON.stringify('Jest Project')))).toStrictEqual([]);
+
+        localStorage.clear();
+    })
+})
+
+
+
+
+
 
 describe("Task creation", () => {
     test("Add empty input and through the alert error", () => {
