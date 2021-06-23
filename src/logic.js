@@ -57,6 +57,7 @@ const deleteOldProjectsFromHTML = () => {
       const element = arrOldProjects[index];
       element.innerHTML = '';
     }
+    return arrOldProjects[0];
   }
 };
 
@@ -264,3 +265,4 @@ export { setTasksArrayForCustomPages };
 export { setTasksArrayForToday };
 export { displayHeadingIfThereIsItem };
 export { dropDown };
+export { addProjectToProjects };
