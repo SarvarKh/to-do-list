@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { before } from 'lodash';
-import {createE, deleteOldProjectsFromHTML, projectInputVerification, addProjectToProjects, Task, addTaskToDefaultTasks} from './logic'
+import {createE, deleteOldProjectsFromHTML, projectInputVerification, addProjectToProjects, Task, addTaskToDefaultTasks, deleteOldTasks} from './logic'
 
 describe("HTML elements creation with muptiple properties", () => {
     test("Creates a <p> element", () => {
@@ -84,3 +84,13 @@ describe("Task creation", () => {
     })
 })
 
+describe("Task manipulation", () => {
+    beforeEach(() => {
+        document.body.appendChild(createE('tr', 'Some random text', 'row'));
+    })
+    
+    test('Delete old tasks', () => {
+        expect(deleteOldTasks()).toStrictEqual(createE('tr', false, 'row'));
+        expect(deleteOldTasks()).not.toStrictEqual(createE('tr', 'random-content', 'row'));
+    })
+})

@@ -161,6 +161,7 @@ const deleteOldTasks = () => {
       const element = arrOldTasks[index];
       element.innerHTML = '';
     }
+    return arrOldTasks[0];
   }
 };
 
