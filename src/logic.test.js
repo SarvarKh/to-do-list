@@ -55,8 +55,29 @@ describe("Project creation", () => {
 
 
 
-
 describe("Task creation", () => {
+    beforeEach(() => {
+        localStorage.setItem('Default', JSON.stringify([]));
+        const allProjects = {};
+        addProjectToProjects('jest1', allProjects);
+        addProjectToProjects('jest2', allProjects);
+    })
+
+    test("Add newly created task to All Tasks in LocalStorage", () => {
+        const newTask = new Task('testing_title', 'testing_description', 'testing_dueDate', 'testing_priority', 'testing_notes', 'testing_checklist');
+        const allTasks = {
+            default: [],
+            today: [],
+        };
+        addTaskToDefaultTasks(newTask, allTasks, 'jest1');
+        addTaskToDefaultTasks(newTask, allTasks, 'jest2');
+
+        expect(JSON.parse(localStorage.length)).toEqual(3); // ['Default', 'jest1', 'jest2']
+        expect(JSON.parse(localStorage.length)).not.toEqual(2);
+
+        localStorage.clear();
+    })
+
     test("Add empty input and through the alert error", () => {
         window.alert = jest.fn();
         expect(projectInputVerification(createE('input', ""))).toBe("Project Title's Field must be filled out")
@@ -65,25 +86,5 @@ describe("Task creation", () => {
     test("Create Task object", () => {
         expect(new Task('testing_title', 'testing_description', 'testing_dueDate', 'testing_priority', 'testing_notes', 'testing_checklist')).toEqual({title: 'testing_title', description: 'testing_description', dueDate: 'testing_dueDate', priority: 'testing_priority', notes: 'testing_notes', checklist: 'testing_checklist'})
     })
-
-
-    // beforeEach(() => {
-    //     localStorage.setItem('Default', JSON.stringify([]));
-    //     localStorage.setItem('jest', '[{\"title\":\"Task 9999\",\"description\":\"asd\",\"dueDate…\":\"high\",\"notes\":\"das\",\"checklist\":\"Incomplete\"}]');
-    //     const allProjects = {};
-    //     addProjectToProjects('jest', allProjects);
-    // })
-    // test("Add newly created task to All Tasks", () => {
-    //     console.log('Length: ', [1,2,3].length);
-    //     const newTask = new Task('testing_title', 'testing_description', 'testing_dueDate', 'testing_priority', 'testing_notes', 'testing_checklist');
-    //     const allTasks = {
-    //         default: [],
-    //         today: [],
-    //     };
-    //     addTaskToDefaultTasks(newTask, allTasks, 'jest');
-    //     expect(JSON.parse(localStorage.getItem('jest'))).toBe("Cool")
-
-    //     localStorage.clear();
-    // })
 })
 

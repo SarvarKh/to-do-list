@@ -100,7 +100,6 @@ const addTaskToDefaultTasks = (newTask, tasksObj, key) => {
   } else {
     defLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key)));
   }
-
   if (defLocalStorage.length > 0) {
     tasksObj.default = [];
     defLocalStorage.map((e) => tasksObj.default.push(e));
