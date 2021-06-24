@@ -19,17 +19,6 @@ describe("HTML elements creation with muptiple properties", () => {
     })
 })
 
-describe("Remove old projects from HTML content", () => {
-    beforeEach(() => {
-        document.body.appendChild(createE('div', 'Some random text', 'project-container'));
-    })
-    
-    test('Delete old projects from HTML', () => {
-        expect(deleteOldProjectsFromHTML()).toStrictEqual(createE('div', false, 'project-container'));
-        expect(deleteOldProjectsFromHTML()).not.toStrictEqual(createE('p', 'random-content', 'random-class'));
-    })
-})
-
 describe("Project creation", () => {
     test("Create a project from user input", () => {
         const allProjects = {};
@@ -48,6 +37,17 @@ describe("Project creation", () => {
         expect(JSON.parse(localStorage.length)).not.toEqual(3);
 
         localStorage.clear();
+    })
+})
+
+describe("Projects manipulation", () => {
+    beforeEach(() => {
+        document.body.appendChild(createE('div', 'Some random text', 'project-container'));
+    })
+    
+    test('Delete old projects', () => {
+        expect(deleteOldProjectsFromHTML()).toStrictEqual(createE('div', false, 'project-container'));
+        expect(deleteOldProjectsFromHTML()).not.toStrictEqual(createE('p', 'random-content', 'random-class'));
     })
 })
 
