@@ -166,3 +166,4 @@ const createTaskModal = () => {
 };
 
 export default createTaskModal;
+export { editTaskFromTasks };
