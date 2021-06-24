@@ -5,12 +5,12 @@ import { before } from 'lodash';
 import {createE, deleteOldProjectsFromHTML, projectInputVerification, addProjectToProjects, Task, addTaskToDefaultTasks} from './logic'
 
 describe("HTML elements creation with muptiple properties", () => {
-    test('Creates a p element', () => {
+    test("Creates a <p> element", () => {
         const newElement = document.createElement('p');
         expect(createE('p')).toStrictEqual(newElement);
     })
     
-    test('Creates a div element with its attributes like: textContent, ClassName', () => {
+    test('Creates a <div> element with its attributes like: textContent, ClassName', () => {
         const newElement = document.createElement('div');
         newElement.textContent = "this is the div element content";
         newElement.classList.add('div-class')
@@ -24,7 +24,7 @@ describe("Remove old projects from HTML content", () => {
         document.body.appendChild(createE('div', 'Some random text', 'project-container'));
     })
     
-    test('deleteOldProjectsFromHTML', () => {
+    test('Delete old projects from HTML', () => {
         expect(deleteOldProjectsFromHTML()).toStrictEqual(createE('div', false, 'project-container'));
         expect(deleteOldProjectsFromHTML()).not.toStrictEqual(createE('p', 'random-content', 'random-class'));
     })
@@ -50,10 +50,6 @@ describe("Project creation", () => {
         localStorage.clear();
     })
 })
-
-
-
-
 
 describe("Task creation", () => {
     beforeEach(() => {
