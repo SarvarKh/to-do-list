@@ -71,12 +71,11 @@ const projectInputVerification = (projectTitle) => {
   if (projectTitle.value === '') {
     alert("Project Title's Field must be filled out"); // eslint-disable-line no-alert
     return "Project Title's Field must be filled out";
-  } else {
-    const newProject = projectTitle.value;
-    addProjectToProjects(newProject, projects);
-    const asideBottom = document.querySelector('.aside-bottom');
-    asideBottom.appendChild(displayProjects());
   }
+  const newProject = projectTitle.value;
+  addProjectToProjects(newProject, projects);
+  const asideBottom = document.querySelector('.aside-bottom');
+  asideBottom.appendChild(displayProjects());
 };
 
 function Task(title, description, dueDate, priority, notes, checklist) {
