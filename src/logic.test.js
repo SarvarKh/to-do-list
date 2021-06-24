@@ -15,6 +15,7 @@ describe("HTML elements creation with muptiple properties", () => {
         newElement.textContent = "this is the div element content";
         newElement.classList.add('div-class')
         expect(createE('div', "this is the div element content", "div-class")).toStrictEqual(newElement);
+        expect(createE('div', "this is the div element content", "div-class")).not.toStrictEqual(document.createElement('div'));
     })
 })
 
@@ -25,6 +26,7 @@ describe("Remove old projects from HTML content", () => {
     
     test('deleteOldProjectsFromHTML', () => {
         expect(deleteOldProjectsFromHTML()).toStrictEqual(createE('div', false, 'project-container'));
+        expect(deleteOldProjectsFromHTML()).not.toStrictEqual(createE('p', 'random-content', 'random-class'));
     })
 })
 
@@ -33,6 +35,7 @@ describe("Project creation", () => {
         const allProjects = {};
         addProjectToProjects('Jest Project', allProjects);
         expect(JSON.parse(localStorage.getItem(JSON.stringify('Jest Project')))).toStrictEqual([]);
+        expect(JSON.parse(localStorage.getItem(JSON.stringify('Jest Project')))).not.toStrictEqual([1, 2]);
 
         localStorage.clear();
     })
@@ -42,6 +45,7 @@ describe("Project creation", () => {
         addProjectToProjects('Jest 1', allProjects);
         addProjectToProjects('Jest 2', allProjects);
         expect(JSON.parse(localStorage.length)).toEqual(2);
+        expect(JSON.parse(localStorage.length)).not.toEqual(3);
 
         localStorage.clear();
     })
