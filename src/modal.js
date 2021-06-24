@@ -68,3 +68,4 @@ const createProjectModal = () => {
 };
 
 export default createProjectModal;
+export { editProjectFromProjects };
