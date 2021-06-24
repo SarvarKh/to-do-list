@@ -59,6 +59,7 @@ const deleteOldProjectsFromHTML = () => {
     }
     return arrOldProjects[0];
   }
+  return oldProjects;
 };
 
 const loopThroughLocalStorageKeys = (projectsContainer) => {
@@ -76,6 +77,7 @@ const projectInputVerification = (projectTitle) => {
   addProjectToProjects(newProject, projects);
   const asideBottom = document.querySelector('.aside-bottom');
   asideBottom.appendChild(displayProjects());
+  return projectTitle;
 };
 
 function Task(title, description, dueDate, priority, notes, checklist) {
@@ -162,6 +164,7 @@ const deleteOldTasks = () => {
     }
     return arrOldTasks[0];
   }
+  return oldTasks;
 };
 
 function setTasksArray(key) {
