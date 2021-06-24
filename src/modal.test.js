@@ -1,8 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-import { TestWatcher } from 'jest';
-import { before } from 'lodash';
 import { editProjectFromProjects } from './modal';
 
 describe('Editing the project', () => {

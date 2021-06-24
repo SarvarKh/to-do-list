@@ -1,9 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-import { before } from 'lodash';
 import {
-  createE, deleteOldProjectsFromHTML, projectInputVerification, addProjectToProjects, Task, addTaskToDefaultTasks, deleteOldTasks,
+  createE,
+  deleteOldProjectsFromHTML,
+  projectInputVerification,
+  addProjectToProjects,
+  Task,
+  addTaskToDefaultTasks,
+  deleteOldTasks,
 } from './logic';
 
 describe('HTML elements creation with muptiple properties', () => {

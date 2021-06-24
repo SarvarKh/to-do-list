@@ -1,9 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { TestWatcher } from 'jest';
-import { before } from 'lodash';
-import editTaskFromTasks from './task-modal';
+import editTaskFromTasks from './task-modal'; // eslint-disable-line import/no-named-as-default
 
 describe('Editing the task', () => {
   const { reload } = window.location;

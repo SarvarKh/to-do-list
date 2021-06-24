@@ -208,7 +208,6 @@ function start() {
   content.appendChild(container);
   content.appendChild(createFooter());
   setActiveButton(document.querySelector('#defaulBtn'));
-  console.log(localStorage);
   loadProject();
 }
 
