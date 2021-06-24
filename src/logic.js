@@ -107,16 +107,16 @@ const addTaskToDefaultTasks = (newTask, tasksObj, key) => {
     tasksObj.default.push(newTask);
 
     if (key === undefined) {
-      localStorage.setItem('Default', JSON.stringify(allTasks.default));
+      localStorage.setItem('Default', JSON.stringify(tasksObj.default));
     } else {
-      localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+      localStorage.setItem(JSON.stringify(key), JSON.stringify(tasksObj.default));
     }
   } else {
     tasksObj.default.push(newTask);
     if (key === undefined) {
-      localStorage.setItem('Default', JSON.stringify(allTasks.default));
+      localStorage.setItem('Default', JSON.stringify(tasksObj.default));
     } else {
-      localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+      localStorage.setItem(JSON.stringify(key), JSON.stringify(tasksObj.default));
     }
   }
 };

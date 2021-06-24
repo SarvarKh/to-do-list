@@ -36,6 +36,15 @@ describe("Project creation", () => {
 
         localStorage.clear();
     })
+
+    test("Create 2 projects and check by length of keys in LocalStorage", () => {
+        const allProjects = {};
+        addProjectToProjects('Jest 1', allProjects);
+        addProjectToProjects('Jest 2', allProjects);
+        expect(JSON.parse(localStorage.length)).toEqual(2);
+
+        localStorage.clear();
+    })
 })
 
 
@@ -52,4 +61,25 @@ describe("Task creation", () => {
     test("Create Task object", () => {
         expect(new Task('testing_title', 'testing_description', 'testing_dueDate', 'testing_priority', 'testing_notes', 'testing_checklist')).toEqual({title: 'testing_title', description: 'testing_description', dueDate: 'testing_dueDate', priority: 'testing_priority', notes: 'testing_notes', checklist: 'testing_checklist'})
     })
+
+
+    // beforeEach(() => {
+    //     localStorage.setItem('Default', JSON.stringify([]));
+    //     localStorage.setItem('jest', '[{\"title\":\"Task 9999\",\"description\":\"asd\",\"dueDate…\":\"high\",\"notes\":\"das\",\"checklist\":\"Incomplete\"}]');
+    //     const allProjects = {};
+    //     addProjectToProjects('jest', allProjects);
+    // })
+    // test("Add newly created task to All Tasks", () => {
+    //     console.log('Length: ', [1,2,3].length);
+    //     const newTask = new Task('testing_title', 'testing_description', 'testing_dueDate', 'testing_priority', 'testing_notes', 'testing_checklist');
+    //     const allTasks = {
+    //         default: [],
+    //         today: [],
+    //     };
+    //     addTaskToDefaultTasks(newTask, allTasks, 'jest');
+    //     expect(JSON.parse(localStorage.getItem('jest'))).toBe("Cool")
+
+    //     localStorage.clear();
+    // })
 })
+
