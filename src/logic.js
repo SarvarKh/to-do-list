@@ -57,7 +57,9 @@ const deleteOldProjectsFromHTML = () => {
       const element = arrOldProjects[index];
       element.innerHTML = '';
     }
+    return arrOldProjects[0];
   }
+  return oldProjects;
 };
 
 const loopThroughLocalStorageKeys = (projectsContainer) => {
@@ -69,12 +71,13 @@ const projects = {};
 const projectInputVerification = (projectTitle) => {
   if (projectTitle.value === '') {
     alert("Project Title's Field must be filled out"); // eslint-disable-line no-alert
-  } else {
-    const newProject = projectTitle.value;
-    addProjectToProjects(newProject, projects);
-    const asideBottom = document.querySelector('.aside-bottom');
-    asideBottom.appendChild(displayProjects());
+    return "Project Title's Field must be filled out";
   }
+  const newProject = projectTitle.value;
+  addProjectToProjects(newProject, projects);
+  const asideBottom = document.querySelector('.aside-bottom');
+  asideBottom.appendChild(displayProjects());
+  return projectTitle;
 };
 
 function Task(title, description, dueDate, priority, notes, checklist) {
@@ -98,23 +101,22 @@ const addTaskToDefaultTasks = (newTask, tasksObj, key) => {
   } else {
     defLocalStorage = JSON.parse(localStorage.getItem(JSON.stringify(key)));
   }
-
   if (defLocalStorage.length > 0) {
     tasksObj.default = [];
     defLocalStorage.map((e) => tasksObj.default.push(e));
     tasksObj.default.push(newTask);
 
     if (key === undefined) {
-      localStorage.setItem('Default', JSON.stringify(allTasks.default));
+      localStorage.setItem('Default', JSON.stringify(tasksObj.default));
     } else {
-      localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+      localStorage.setItem(JSON.stringify(key), JSON.stringify(tasksObj.default));
     }
   } else {
     tasksObj.default.push(newTask);
     if (key === undefined) {
-      localStorage.setItem('Default', JSON.stringify(allTasks.default));
+      localStorage.setItem('Default', JSON.stringify(tasksObj.default));
     } else {
-      localStorage.setItem(JSON.stringify(key), JSON.stringify(allTasks.default));
+      localStorage.setItem(JSON.stringify(key), JSON.stringify(tasksObj.default));
     }
   }
 };
@@ -160,7 +162,9 @@ const deleteOldTasks = () => {
       const element = arrOldTasks[index];
       element.innerHTML = '';
     }
+    return arrOldTasks[0];
   }
+  return oldTasks;
 };
 
 function setTasksArray(key) {
@@ -264,3 +268,4 @@ export { setTasksArrayForCustomPages };
 export { setTasksArrayForToday };
 export { displayHeadingIfThereIsItem };
 export { dropDown };
+export { addProjectToProjects, Task };

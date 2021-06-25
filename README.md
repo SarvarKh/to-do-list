@@ -16,10 +16,17 @@
 
 > A Todo List is part of Full-Stack JavaScript Curriculum in the [the Odin Project’s](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/todo-list).
 
+## Unit Testing with [Jest JavaScript Testing Framework](https://jestjs.io/)
+
+<div align="center">
+  <img src="screenshots/testing.png?raw=true" width="100%" height="auto"/>
+</div>
+
 ## Built With
 
 - JavaScript
 - Webpack
+- Jest JavaScript Testing Framework 
 - HTML/CSS
 
 ## Live Demo
@@ -38,6 +45,15 @@ To get a local copy up and running follow these simple example steps.
     Step 1: git clone https://github.com/SarvarKh/to-do-list.git
     
     Step 2: open live-server
+
+### Jest setup
+
+    Step 1: npm install --save-dev jest
+    
+    Step 2: npm run test
+
+[Click here for detail explanation on how to run Jest locally](https://jestjs.io/docs/getting-started)
+
 
 ## Authors
 
